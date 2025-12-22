@@ -1,7 +1,5 @@
 # UCLI Docs
 
-[![UCLI Tools](docs/assets/logo.svg){ width="32" align="right" }](https://ucli.tools)
-
 Official documentation site for UCLI Tools - Professional CLI utilities for developers. Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) and automatically deployed to [docs.ucli.tools](https://docs.ucli.tools).
 
 ## 🚀 Quick Start
