@@ -1,0 +1,3187 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Professional CLI tools for developers">
+      
+      
+        <meta name="author" content="UCLI Tools Team">
+      
+      
+        <link rel="canonical" href="https://docs.ucli.tools/development/architecture/">
+      
+      
+        <link rel="prev" href="../../community/security/">
+      
+      
+        <link rel="next" href="../building-tools/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Architecture - UCLI Tools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="UCLI Tools" class="md-header__button md-logo" aria-label="UCLI Tools" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UCLI Tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ucli-tools/ucli-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ucli-tools/ucli-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/introduction/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/ucli/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../community/contact/" class="md-tabs__link">
+          
+  
+  
+  Community
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UCLI Tools" class="md-nav__button md-logo" aria-label="UCLI Tools" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    UCLI Tools
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ucli-tools/ucli-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ucli-tools/ucli-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/concepts.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/faq.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/glossary.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ucli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ucli
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/gits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/mdtexpdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mdtexpdf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/mdaudiobook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mdaudiobook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/code-of-conduct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code of Conduct
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ System Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Core Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Core Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecosystem-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosystem Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Architectural Principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Architectural Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Modularity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Consistency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-extensibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Extensibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Reliability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ Component Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏛️ Component Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ucli-core-tool-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UCLI Core (Tool Manager)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UCLI Core (Tool Manager)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#individual-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Individual Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Categories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow-tools-gits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Tools (gits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-tools-mdtexpdf-mdaudiobook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content Tools (mdtexpdf, mdaudiobook)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Infrastructure Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Infrastructure Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-material-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs + Material Theme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-based-installer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web-Based Installer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registry System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registry System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Technical Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Technical Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technology Stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technology Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-specific-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool-Specific Technologies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool-Specific Technologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdtexpdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mdtexpdf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdaudiobook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mdaudiobook
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build System
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 Security Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Security Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribution Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Monitoring &amp; Observability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Monitoring &amp; Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics Collection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalability-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Scalability Considerations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Scalability Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Horizontal Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vertical Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-architecture-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Future Architecture Evolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Future Architecture Evolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planned Enhancements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Planned Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microservices-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microservices Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-native-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud-Native Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aiml-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI/ML Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ System Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Core Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Core Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecosystem-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosystem Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Architectural Principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Architectural Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Modularity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Consistency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-extensibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Extensibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Reliability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ Component Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏛️ Component Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ucli-core-tool-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UCLI Core (Tool Manager)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UCLI Core (Tool Manager)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#individual-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Individual Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Categories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow-tools-gits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Tools (gits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-tools-mdtexpdf-mdaudiobook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content Tools (mdtexpdf, mdaudiobook)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Infrastructure Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Infrastructure Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-material-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs + Material Theme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-based-installer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web-Based Installer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registry System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registry System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Technical Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Technical Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technology Stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technology Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-specific-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool-Specific Technologies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool-Specific Technologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdtexpdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mdtexpdf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdaudiobook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mdaudiobook
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build System
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 Security Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Security Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribution Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Monitoring &amp; Observability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Monitoring &amp; Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics Collection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalability-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Scalability Considerations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Scalability Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Horizontal Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vertical Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-architecture-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Future Architecture Evolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Future Architecture Evolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planned Enhancements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Planned Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microservices-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microservices Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-native-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud-Native Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aiml-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI/ML Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+    <a href="https://github.com/ucli-tools/ucli-docs/edit/main/docs/development/architecture.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/ucli-tools/ucli-docs/raw/main/docs/development/architecture.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h1>
+<h2 id="system-architecture">🏗️ System Architecture<a class="headerlink" href="#system-architecture" title="Permanent link">&para;</a></h2>
+<p>UCLI Tools is designed as a modular, distributed ecosystem of command-line utilities that work together to provide a comprehensive development environment. This document outlines the architectural principles and design decisions that guide the project.</p>
+<h2 id="core-components">🧩 Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h2>
+<h3 id="ecosystem-structure">Ecosystem Structure<a class="headerlink" href="#ecosystem-structure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│                    UCLI TOOLS ECOSYSTEM                     │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─────────────────────────────────────────────────────────────┤
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  │   ucli      │  │   docs      │  │   install   │         │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  │  (manager)  │  │ (mkdocs)    │  │   (web)     │         │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  └─────────────┘  └─────────────┘  └─────────────┘         │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├─────────────────────────────────────────────────────────────┤
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  │    gits     │  │  mdtexpdf   │  │ mdaudiobook │         │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  │  (git ops)  │  │   (pdf)     │  │   (tts)     │         │
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  └─────────────┘  └─────────────┘  └─────────────┘         │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>├─────────────────────────────────────────────────────────────┤
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│  │  registry   │  │   website   │  │  community  │         │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  │   (api)     │  │   (astro)   │  │   (users)   │         │
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│  └─────────────┘  └─────────────┘  └─────────────┘         │
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="architectural-principles">🎯 Architectural Principles<a class="headerlink" href="#architectural-principles" title="Permanent link">&para;</a></h2>
+<h3 id="1-modularity">1. Modularity<a class="headerlink" href="#1-modularity" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Independent Tools</strong>: Each tool operates independently</li>
+<li><strong>Loose Coupling</strong>: Tools communicate through standard interfaces</li>
+<li><strong>Composable</strong>: Tools can be combined for complex workflows</li>
+</ul>
+<h3 id="2-consistency">2. Consistency<a class="headerlink" href="#2-consistency" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Unified Interface</strong>: Consistent command patterns across tools</li>
+<li><strong>Shared Branding</strong>: Common visual and interaction design</li>
+<li><strong>Standard Practices</strong>: Consistent development and deployment processes</li>
+</ul>
+<h3 id="3-extensibility">3. Extensibility<a class="headerlink" href="#3-extensibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Plugin Architecture</strong>: Easy to add new tools to the ecosystem</li>
+<li><strong>API-First Design</strong>: RESTful APIs for integration</li>
+<li><strong>Configuration Management</strong>: Flexible configuration systems</li>
+</ul>
+<h3 id="4-reliability">4. Reliability<a class="headerlink" href="#4-reliability" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Error Handling</strong>: Comprehensive error reporting and recovery</li>
+<li><strong>Testing</strong>: Automated testing at all levels</li>
+<li><strong>Monitoring</strong>: Health checks and performance monitoring</li>
+</ul>
+<h2 id="component-architecture">🏛️ Component Architecture<a class="headerlink" href="#component-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="ucli-core-tool-manager">UCLI Core (Tool Manager)<a class="headerlink" href="#ucli-core-tool-manager" title="Permanent link">&para;</a></h3>
+<h4 id="responsibilities">Responsibilities<a class="headerlink" href="#responsibilities" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tool Discovery</strong>: Registry integration and tool listing</li>
+<li><strong>Installation Management</strong>: Cross-platform installation and updates</li>
+<li><strong>Dependency Resolution</strong>: Automatic dependency management</li>
+<li><strong>Configuration</strong>: Global and tool-specific settings</li>
+</ul>
+<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────────────┐
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│           UCLI CORE                 │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├─────────────────────────────────────┤
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  ┌─────────────┐  ┌─────────────┐   │
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│  │ CLI Parser  │  │  Registry   │   │
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  │             │  │  Client     │   │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  └─────────────┘  └─────────────┘   │
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>├─────────────────────────────────────┤
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│  ┌─────────────┐  ┌─────────────┐   │
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│  │ Installer   │  │ Config Mgmt │   │
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│  │             │  │             │   │
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  └─────────────┘  └─────────────┘   │
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>└─────────────────────────────────────┘
+</code></pre></div>
+<h3 id="individual-tools">Individual Tools<a class="headerlink" href="#individual-tools" title="Permanent link">&para;</a></h3>
+<h4 id="design-pattern">Design Pattern<a class="headerlink" href="#design-pattern" title="Permanent link">&para;</a></h4>
+<p>Each tool follows a consistent internal architecture:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌─────────────────────────────────────┐
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│         TOOL ARCHITECTURE           │
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├─────────────────────────────────────┤
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│  ┌─────────────┐  ┌─────────────┐   │
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│  │   CLI       │  │  Business   │   │
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│  │ Interface   │  │   Logic     │   │
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│  └─────────────┘  └─────────────┘   │
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>├─────────────────────────────────────┤
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│  ┌─────────────┐  ┌─────────────┐   │
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│  │  Config     │  │   Utils     │   │
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│  │ Management  │  │             │   │
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│  └─────────────┘  └─────────────┘   │
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>└─────────────────────────────────────┘
+</code></pre></div>
+<h4 id="tool-categories">Tool Categories<a class="headerlink" href="#tool-categories" title="Permanent link">&para;</a></h4>
+<h5 id="workflow-tools-gits"><strong>Workflow Tools</strong> (gits)<a class="headerlink" href="#workflow-tools-gits" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Purpose</strong>: Streamline development workflows</li>
+<li><strong>Integration</strong>: Git hosting platforms, CI/CD systems</li>
+<li><strong>Extensibility</strong>: Custom workflow definitions</li>
+</ul>
+<h5 id="content-tools-mdtexpdf-mdaudiobook"><strong>Content Tools</strong> (mdtexpdf, mdaudiobook)<a class="headerlink" href="#content-tools-mdtexpdf-mdaudiobook" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Purpose</strong>: Transform and generate content</li>
+<li><strong>Pipeline</strong>: Input processing → transformation → output</li>
+<li><strong>Quality</strong>: High-fidelity output generation</li>
+</ul>
+<h2 id="infrastructure-architecture">🌐 Infrastructure Architecture<a class="headerlink" href="#infrastructure-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="documentation-system">Documentation System<a class="headerlink" href="#documentation-system" title="Permanent link">&para;</a></h3>
+<h4 id="mkdocs-material-theme">MkDocs + Material Theme<a class="headerlink" href="#mkdocs-material-theme" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docs/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── mkdocs.yml          # Configuration
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── docs/               # Content
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│   ├── index.md       # Home page
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   ├── getting-started/
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   ├── tools/
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   └── community/
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>├── overrides/          # Theme customization
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>└── .github/workflows/  # CI/CD
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    └── deploy-docs.yml
+</code></pre></div>
+<h4 id="deployment-pipeline">Deployment Pipeline<a class="headerlink" href="#deployment-pipeline" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Content Creation</strong>: Markdown files in <code>docs/</code></li>
+<li><strong>Build Process</strong>: MkDocs generates static HTML</li>
+<li><strong>Deployment</strong>: GitHub Pages automatic deployment</li>
+<li><strong>CDN</strong>: Global distribution via GitHub's CDN</li>
+</ol>
+<h3 id="installation-system">Installation System<a class="headerlink" href="#installation-system" title="Permanent link">&para;</a></h3>
+<h4 id="web-based-installer">Web-Based Installer<a class="headerlink" href="#web-based-installer" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>install.ucli.tools/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── index.html         # Landing page
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├── install.sh         # Installation script
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>├── CNAME             # Domain configuration
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>└── favicon.svg       # Branding
+</code></pre></div>
+<h4 id="installation-flow">Installation Flow<a class="headerlink" href="#installation-flow" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>User Visits</strong>: Web interface with copy-paste command</li>
+<li><strong>Script Download</strong>: Automated OS detection and setup</li>
+<li><strong>Tool Installation</strong>: ucli manager installation</li>
+<li><strong>Tool Discovery</strong>: Registry integration for available tools</li>
+</ol>
+<h3 id="registry-system">Registry System<a class="headerlink" href="#registry-system" title="Permanent link">&para;</a></h3>
+<h4 id="api-architecture">API Architecture<a class="headerlink" href="#api-architecture" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>registry.ucli.tools/
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── api/v1/
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>│   ├── tools/         # Tool listings
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│   ├── categories/    # Tool categories
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>│   └── search/        # Search functionality
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>├── registry/
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│   └── apps.yaml      # Tool registry data
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>└── docs/             # Registry documentation
+</code></pre></div>
+<h4 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Registry Updates</strong>: Manual or automated updates</li>
+<li><strong>Validation</strong>: Schema validation and testing</li>
+<li><strong>API Serving</strong>: RESTful API for tool discovery</li>
+<li><strong>CLI Integration</strong>: ucli fetches available tools</li>
+</ol>
+<h2 id="technical-architecture">🔧 Technical Architecture<a class="headerlink" href="#technical-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="technology-stack">Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">&para;</a></h3>
+<h4 id="core-technologies">Core Technologies<a class="headerlink" href="#core-technologies" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Languages</strong>: Bash, Python, JavaScript</li>
+<li><strong>Documentation</strong>: MkDocs, Material Theme</li>
+<li><strong>Web Interfaces</strong>: HTML5, CSS3, Astro (planned)</li>
+<li><strong>APIs</strong>: RESTful JSON APIs</li>
+<li><strong>CI/CD</strong>: GitHub Actions</li>
+</ul>
+<h4 id="tool-specific-technologies">Tool-Specific Technologies<a class="headerlink" href="#tool-specific-technologies" title="Permanent link">&para;</a></h4>
+<h5 id="gits">gits<a class="headerlink" href="#gits" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Core</strong>: Bash scripting</li>
+<li><strong>Git Integration</strong>: Native git commands</li>
+<li><strong>Platform APIs</strong>: GitHub REST API, Gitea API</li>
+<li><strong>Authentication</strong>: Personal access tokens</li>
+</ul>
+<h5 id="mdtexpdf">mdtexpdf<a class="headerlink" href="#mdtexpdf" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Core</strong>: Bash wrapper</li>
+<li><strong>Processing</strong>: Pandoc for conversion</li>
+<li><strong>Typesetting</strong>: LaTeX (TeXLive/MacTeX/MiKTeX)</li>
+<li><strong>Templates</strong>: Custom LaTeX templates</li>
+</ul>
+<h5 id="mdaudiobook">mdaudiobook<a class="headerlink" href="#mdaudiobook" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Core</strong>: Python application</li>
+<li><strong>TTS Engines</strong>: eSpeak, Festival, pyttsx3</li>
+<li><strong>Audio Processing</strong>: FFmpeg</li>
+<li><strong>Metadata</strong>: ID3 tags, JSON metadata</li>
+</ul>
+<h3 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h3>
+<h4 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>tool-repository/
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── src/               # Source code
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>├── tests/            # Test suites
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>├── docs/             # Tool documentation
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>├── scripts/          # Build and utility scripts
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>├── Makefile          # Build system
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>├── README.md         # Tool documentation
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>└── LICENSE           # Apache 2.0
+</code></pre></div>
+<h4 id="build-system">Build System<a class="headerlink" href="#build-system" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Makefile</strong>: Standard build targets (build, test, install, clean)</li>
+<li><strong>Cross-Platform</strong>: Support for Linux, macOS, Windows</li>
+<li><strong>Dependencies</strong>: Automatic dependency resolution</li>
+<li><strong>Packaging</strong>: Distribution-ready packages</li>
+</ul>
+<h2 id="security-architecture">🔐 Security Architecture<a class="headerlink" href="#security-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="security-layers">Security Layers<a class="headerlink" href="#security-layers" title="Permanent link">&para;</a></h3>
+<h4 id="code-security">Code Security<a class="headerlink" href="#code-security" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Static Analysis</strong>: Automated code scanning</li>
+<li><strong>Dependency Checks</strong>: Vulnerability scanning</li>
+<li><strong>Code Reviews</strong>: Required for all changes</li>
+<li><strong>Signed Commits</strong>: GPG commit signing</li>
+</ul>
+<h4 id="distribution-security">Distribution Security<a class="headerlink" href="#distribution-security" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Signed Releases</strong>: Cryptographic signatures</li>
+<li><strong>Secure Downloads</strong>: HTTPS-only distribution</li>
+<li><strong>Checksums</strong>: SHA256 verification</li>
+<li><strong>Supply Chain</strong>: Verified build pipelines</li>
+</ul>
+<h4 id="runtime-security">Runtime Security<a class="headerlink" href="#runtime-security" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Sandboxing</strong>: Isolated execution environments</li>
+<li><strong>Permission Management</strong>: Minimal required permissions</li>
+<li><strong>Input Validation</strong>: Comprehensive sanitization</li>
+<li><strong>Error Handling</strong>: Secure error reporting</li>
+</ul>
+<h2 id="monitoring-observability">📊 Monitoring &amp; Observability<a class="headerlink" href="#monitoring-observability" title="Permanent link">&para;</a></h2>
+<h3 id="metrics-collection">Metrics Collection<a class="headerlink" href="#metrics-collection" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Usage Statistics</strong>: Tool usage patterns</li>
+<li><strong>Performance Metrics</strong>: Execution times, resource usage</li>
+<li><strong>Error Rates</strong>: Failure rates and error types</li>
+<li><strong>User Feedback</strong>: Issue reports and feature requests</li>
+</ul>
+<h3 id="logging-architecture">Logging Architecture<a class="headerlink" href="#logging-architecture" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Structured Logging</strong>: JSON-formatted logs</li>
+<li><strong>Log Levels</strong>: DEBUG, INFO, WARN, ERROR</li>
+<li><strong>Centralized Collection</strong>: Aggregated log analysis</li>
+<li><strong>Privacy Compliance</strong>: No sensitive data in logs</li>
+</ul>
+<h3 id="health-checks">Health Checks<a class="headerlink" href="#health-checks" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Component Health</strong>: Individual tool health status</li>
+<li><strong>Dependency Checks</strong>: External service availability</li>
+<li><strong>Performance Monitoring</strong>: Response times and throughput</li>
+<li><strong>Alerting</strong>: Automated alerts for issues</li>
+</ul>
+<h2 id="scalability-considerations">🚀 Scalability Considerations<a class="headerlink" href="#scalability-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="horizontal-scaling">Horizontal Scaling<a class="headerlink" href="#horizontal-scaling" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Stateless Design</strong>: Tools can run independently</li>
+<li><strong>Load Balancing</strong>: Multiple instances for high availability</li>
+<li><strong>CDN Integration</strong>: Global content distribution</li>
+<li><strong>Caching</strong>: Response caching for improved performance</li>
+</ul>
+<h3 id="vertical-scaling">Vertical Scaling<a class="headerlink" href="#vertical-scaling" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Resource Optimization</strong>: Efficient memory and CPU usage</li>
+<li><strong>Batch Processing</strong>: Large-scale operations support</li>
+<li><strong>Async Operations</strong>: Non-blocking operations for UI responsiveness</li>
+<li><strong>Background Jobs</strong>: Long-running tasks in background</li>
+</ul>
+<h2 id="future-architecture-evolution">🔄 Future Architecture Evolution<a class="headerlink" href="#future-architecture-evolution" title="Permanent link">&para;</a></h2>
+<h3 id="planned-enhancements">Planned Enhancements<a class="headerlink" href="#planned-enhancements" title="Permanent link">&para;</a></h3>
+<h4 id="microservices-migration">Microservices Migration<a class="headerlink" href="#microservices-migration" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Service Decomposition</strong>: Break down monolithic components</li>
+<li><strong>Container Orchestration</strong>: Kubernetes deployment</li>
+<li><strong>Service Mesh</strong>: Istio for service communication</li>
+<li><strong>API Gateway</strong>: Centralized API management</li>
+</ul>
+<h4 id="cloud-native-features">Cloud-Native Features<a class="headerlink" href="#cloud-native-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Serverless Functions</strong>: AWS Lambda, Google Cloud Functions</li>
+<li><strong>Managed Services</strong>: Cloud databases, storage, and compute</li>
+<li><strong>Event-Driven Architecture</strong>: Asynchronous processing</li>
+<li><strong>Multi-Region Deployment</strong>: Global availability</li>
+</ul>
+<h4 id="aiml-integration">AI/ML Integration<a class="headerlink" href="#aiml-integration" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Intelligent Tool Discovery</strong>: ML-based recommendations</li>
+<li><strong>Automated Testing</strong>: AI-powered test generation</li>
+<li><strong>Smart Error Resolution</strong>: Automated troubleshooting</li>
+<li><strong>Usage Analytics</strong>: ML-driven insights</li>
+</ul>
+<p>This architecture provides a solid foundation for UCLI Tools while maintaining flexibility for future growth and innovation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  <div class="md-content" data-md-component="content" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--md-default-fg-color--lightest);">
+  <div style="text-align: center; margin-bottom: 1.5rem;">
+    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">UCLI Tools Ecosystem</h3>
+    <p style="color: var(--md-default-fg-color--light); font-size: 0.875rem;">Professional CLI tools for developers</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto 2rem auto;">
+    <a href="https://ucli.tools" style="padding: 1rem 1.25rem; background: var(--md-code-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 0.5rem; text-decoration: none; color: inherit; transition: all 0.3s; min-height: 4.5rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden;" onmouseover="this.style.borderColor='var(--md-primary-fg-color)'" onmouseout="this.style.borderColor='var(--md-default-fg-color--lightest)'">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; overflow: hidden;">
+        <svg style="width: 1rem; height: 1rem; color: var(--md-primary-fg-color); flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        <span style="font-weight: 600; font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">UCLI Tools</span>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--md-default-fg-color--light); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ucli.tools</p>
+    </a>
+
+    <a href="https://install.ucli.tools" style="padding: 1rem 1.25rem; background: var(--md-code-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 0.5rem; text-decoration: none; color: inherit; transition: all 0.3s; min-height: 4.5rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden;" onmouseover="this.style.borderColor='var(--md-primary-fg-color)'" onmouseout="this.style.borderColor='var(--md-default-fg-color--lightest)'">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; overflow: hidden;">
+        <svg style="width: 1rem; height: 1rem; color: var(--md-primary-fg-color); flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+        <span style="font-weight: 600; font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Install</span>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--md-default-fg-color--light); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">install.ucli.tools</p>
+    </a>
+
+    <a href="https://registry.ucli.tools" style="padding: 1rem 1.25rem; background: var(--md-code-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 0.5rem; text-decoration: none; color: inherit; transition: all 0.3s; min-height: 4.5rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden;" onmouseover="this.style.borderColor='var(--md-primary-fg-color)'" onmouseout="this.style.borderColor='var(--md-default-fg-color--lightest)'">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; overflow: hidden;">
+        <svg style="width: 1rem; height: 1rem; color: var(--md-primary-fg-color); flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+        <span style="font-weight: 600; font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Registry</span>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--md-default-fg-color--light); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">registry.ucli.tools</p>
+    </a>
+
+    <div style="padding: 1rem 1.25rem; background: var(--md-code-bg-color); border: 1px solid var(--md-primary-fg-color); border-radius: 0.5rem; position: relative; min-height: 4.5rem; display: flex; flex-direction: column; justify-content: center;">
+      <div style="position: absolute; top: -0.4rem; right: -0.4rem; background: var(--md-primary-fg-color); color: white; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.65rem; font-weight: 600; white-space: nowrap; z-index: 1;">You are here</div>
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; overflow: hidden;">
+        <svg style="width: 1rem; height: 1rem; color: var(--md-primary-fg-color); flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+        <span style="font-weight: 600; font-size: 0.875rem; color: var(--md-primary-fg-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Documentation</span>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--md-default-fg-color--light); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">docs.ucli.tools</p>
+    </div>
+  </div>
+</div>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../community/security/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Security Policy">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Security Policy
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../building-tools/" class="md-footer__link md-footer__link--next" aria-label="Next: Building Tools">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Building Tools
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 UCLI Tools - Apache 2.0 License
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://ucli.tools" target="_blank" rel="noopener" title="UCLI Tools Main Site" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272h16v176c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V272h16c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1zM240 320h32c26.5 0 48 21.5 48 48v96H192v-96c0-26.5 21.5-48 48-48"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/ucli-tools" target="_blank" rel="noopener" title="UCLI Tools on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/orgs/ucli-tools/discussions" target="_blank" rel="noopener" title="Join our community" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 144c0 97.2-86 176-192 176-26.7 0-52.1-5-75.2-14l-81.6 43.2c-9.3 4.9-20.7 3.2-28.2-4.2s-9.2-18.9-4.2-28.2l35.6-67.2C14.3 220.2 0 183.6 0 144 0 46.8 86-32 192-32s192 78.8 192 176m0 368c-94.1 0-172.4-62.1-188.8-144 120-1.5 224.3-86.9 235.8-202.7 83.3 19.2 145 88.3 145 170.7 0 39.6-14.3 76.2-38.4 105.6l35.6 67.2c4.9 9.3 3.2 20.7-4.2 28.2s-18.9 9.2-28.2 4.2L459.2 498c-23.1 9-48.5 14-75.2 14"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://install.ucli.tools" target="_blank" rel="noopener" title="Install UCLI Tools" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v210.7l-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7zM64 320c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64v-32c0-35.3-28.7-64-64-64h-46.9l-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
