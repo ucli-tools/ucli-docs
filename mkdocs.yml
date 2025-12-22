@@ -134,19 +134,6 @@ nav:
     - mdtexpdf: tools/mdtexpdf.md
     - mdaudiobook: tools/mdaudiobook.md
 
-  - Guides:
-    - Getting Started: guides/getting-started.md
-    - Development Workflow: guides/workflow.md
-    - Custom Scripts: guides/custom-scripts.md
-    - CI/CD Integration: guides/ci-cd.md
-    - Troubleshooting: guides/troubleshooting.md
-
-  - Reference:
-    - CLI Commands: reference/cli-commands.md
-    - Configuration: reference/configuration.md
-    - API Reference: reference/api.md
-    - Tool Registry: reference/registry.md
-
   - Community:
     - Contact: community/contact.md
     - Contributing:
