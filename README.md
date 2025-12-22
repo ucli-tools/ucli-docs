@@ -1,70 +1,216 @@
-# ucli-docs
+# UCLI Docs
 
-Welcome to `ucli-docs`, the official documentation hub for the UCLI-Tools project. This repository contains key documents outlining the vision, principles, and guidelines for UCLI-Tools. It also provides the `ucli-docs.sh` script, a convenient utility to view this documentation directly from your command line.
+[![UCLI Tools](docs/assets/logo.svg){ width="32" align="right" }](https://ucli.tools)
 
-## What's Inside?
+Official documentation site for UCLI Tools - Professional CLI utilities for developers. Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) and automatically deployed to [docs.ucli.tools](https://docs.ucli.tools).
 
-*   **`ucli-docs.sh`**: A shell script to easily display the documentation content (Manifesto, AI Prompt Guide) in your terminal.
-*   **`docs/manifesto.md`**: The UCLI-Tools Manifesto, detailing the vision and principles of the project.
-*   **`docs/prompt.md`**: The AI Prompt Guide for UCLI-Tools, offering guidelines for developing UCLI-compliant tools, especially when using AI assistance.
+## 🚀 Quick Start
 
-## Getting Started
+### View Live Documentation
+Visit [docs.ucli.tools](https://docs.ucli.tools) for the live documentation site.
 
-You can access the documentation in several ways:
+### Test Locally (Development)
 
-### 1. Using the `ucli-docs.sh` script
+#### Prerequisites
+- Python 3.8+
+- pip
 
-This is the recommended way to view the documentation via the command line.
+#### Local Development Setup
 
-**a) Direct Execution (without installation):**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ucli-tools/ucli-docs.git
+   cd ucli-docs
+   ```
 
-Clone this repository or download the `ucli-docs.sh` script.
-```bash
-git clone https://github.com/ucli-tools/ucli-docs.git # Replace with your actual repository URL if different
-cd ucli-docs
+2. **Install MkDocs and dependencies:**
+   ```bash
+   pip install mkdocs-material mkdocs-minify-plugin
+   ```
+
+3. **Start the development server:**
+   ```bash
+   mkdocs serve
+   ```
+
+4. **Open your browser** to `http://127.0.0.1:8000`
+
+The development server supports live reloading - changes to documentation files will automatically refresh the browser.
+
+## 📁 Project Structure
+
 ```
-Then, run the script with a command:
-```bash
-bash ./ucli-docs.sh help         # Show help message
-bash ./ucli-docs.sh manifesto   # Display the UCLI-Tools Manifesto
-bash ./ucli-docs.sh prompt      # Display the AI Prompt Guide
+ucli-docs/
+├── docs/                          # Documentation source files
+│   ├── assets/                   # Images, logos, and static assets
+│   ├── getting-started/          # Installation and setup guides
+│   ├── tools/                    # Individual tool documentation
+│   ├── guides/                   # Tutorials and best practices
+│   ├── reference/                # API docs and technical references
+│   ├── community/                # Contributing and community resources
+│   └── index.md                  # Home page
+├── overrides/                     # MkDocs theme customizations
+│   ├── main.html                # Custom HTML template
+│   └── partials/                 # Reusable HTML components
+│       └── ecosystem.html       # UCLI ecosystem footer
+├── .github/
+│   └── workflows/
+│       └── deploy-docs.yml       # GitHub Pages deployment
+├── mkdocs.yml                    # MkDocs configuration
+└── README.md                     # This file
 ```
 
-**b) Installation (to use `ucli-docs` as a command):**
+## 🛠️ Development Commands
 
-The `ucli-docs.sh` script can install itself for easier access.
+### Build Documentation
 ```bash
-bash ./ucli-docs.sh install
+mkdocs build
 ```
-After installation, you can use it directly:
+Builds the static site to the `site/` directory.
+
+### Serve Locally with Live Reload
 ```bash
-ucli-docs help
-ucli-docs manifesto
-ucli-docs prompt
-ucli-docs uninstall # To remove the installed command
+mkdocs serve
 ```
+Starts development server with hot reload at `http://127.0.0.1:8000`.
 
-### 2. Using the Makefile (for developers)
-
-If you have cloned the repository, you can use the Makefile:
+### Clean Build
 ```bash
-make build    # Installs ucli-docs (equivalent to 'bash ucli-docs.sh install')
-make rebuild  # Uninstalls and then reinstalls ucli-docs
-make delete   # Uninstalls ucli-docs (equivalent to 'ucli-docs uninstall')
+mkdocs build --clean
 ```
-After `make build`, you can use `ucli-docs` as shown in section 1b.
+Removes old build artifacts before building.
 
-### 3. Reading Documentation Files Directly
+### Validate Links
+```bash
+mkdocs build --strict
+```
+Fails the build if there are broken links or references.
 
-You can also browse the documentation files directly in the `docs` directory:
+## 🎨 Customization
 
-*   [UCLI-Tools Manifesto](./docs/manifesto.md) - The vision and principles of the project.
-*   [AI Prompt Guide for UCLI-Tools](./docs/prompt.md) - Guidelines for developing UCLI-compliant tools, suitable for AI assistance.
+### Theme and Branding
+The documentation uses a custom MkDocs Material theme with UCLI Tools branding:
+- **Primary Color**: Yellow (`#fbbf24`)
+- **Logo**: Terminal icon with yellow accent
+- **Dark Mode**: Slate theme optimized for developer experience
 
-## Contributing
+### Custom Components
+- **Ecosystem Footer**: Links to all UCLI Tools sites
+- **Code Highlighting**: Enhanced syntax highlighting
+- **Navigation**: Custom sidebar with organized sections
 
-Contributions to improve `ucli-docs` or the documentation itself are welcome! Please refer to the UCLI-Tools main project for contribution guidelines. (Note: Add a link to main project or specific contribution guidelines if available).
+## 🚀 Deployment
 
-## License
+### Automatic Deployment
+Documentation is automatically deployed to GitHub Pages when changes are pushed to the `main` branch via the `.github/workflows/deploy-docs.yml` workflow.
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](./LICENSE) file for details.
+### Manual Deployment
+```bash
+# Build and deploy manually
+mkdocs gh-deploy
+```
+
+The site will be available at `https://ucli-tools.github.io/ucli-docs/` or custom domain if configured.
+
+## 📝 Writing Documentation
+
+### File Structure
+- Use Markdown (`.md`) files in the `docs/` directory
+- Organize content in subdirectories for logical grouping
+- Front matter is supported for advanced features
+
+### MkDocs Features
+- **Admonitions**: Notes, warnings, tips (`!!! note`)
+- **Code blocks**: Syntax highlighting with language tags
+- **Tables**: Standard Markdown tables
+- **Links**: Automatic cross-references
+- **Images**: Place in `docs/assets/` directory
+
+### Example Document Structure
+```markdown
+# Page Title
+
+Brief introduction paragraph.
+
+## Section Header
+
+Content with [links](reference/cli-commands.md) and `inline code`.
+
+!!! tip "Pro Tip"
+    Helpful advice for users.
+
+## Code Examples
+
+```bash
+# Terminal commands
+ucli build gits
+```
+
+| Feature | Status |
+|---------|--------|
+| Basic usage | ✅ |
+| Advanced features | 🚧 |
+```
+
+## 🤝 Contributing
+
+### Content Contributions
+1. Fork the repository
+2. Create a feature branch: `git checkout -b add-new-guide`
+3. Make your changes to `.md` files in `docs/`
+4. Test locally: `mkdocs serve`
+5. Commit and push your changes
+6. Submit a pull request
+
+### Technical Contributions
+- Theme customizations in `overrides/`
+- MkDocs configuration in `mkdocs.yml`
+- CI/CD improvements in `.github/workflows/`
+
+### Guidelines
+- Use clear, concise language
+- Include practical examples
+- Test all links and commands
+- Follow existing documentation patterns
+- Update the navigation in `mkdocs.yml` if adding new sections
+
+## 🔍 Troubleshooting
+
+### Common Issues
+
+**Build fails with link errors:**
+```bash
+mkdocs build --strict  # Identify broken links
+```
+
+**Theme not loading correctly:**
+```bash
+pip install --upgrade mkdocs-material
+```
+
+**Local server not starting:**
+```bash
+# Check if port 8000 is available
+lsof -i :8000
+# Or use a different port
+mkdocs serve --dev-addr=127.0.0.1:8001
+```
+
+**Assets not loading:**
+- Ensure images are in `docs/assets/`
+- Check file paths in Markdown
+- Clear browser cache
+
+### Getting Help
+- [MkDocs Documentation](https://www.mkdocs.org/)
+- [Material Theme Guide](https://squidfunk.github.io/mkdocs-material/)
+- [GitHub Issues](https://github.com/ucli-tools/ucli-docs/issues)
+- [Community Discussions](https://github.com/orgs/ucli-tools/discussions)
+
+## 📄 License
+
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+
+---
+
+**Ready to contribute?** Check out our [Contributing Guide](community/contributing.md) or start by running `mkdocs serve` locally!
