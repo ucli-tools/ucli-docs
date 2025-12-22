@@ -45,9 +45,8 @@ ucli-docs/
 │   ├── assets/                   # Images, logos, and static assets
 │   ├── getting-started/          # Installation and setup guides
 │   ├── tools/                    # Individual tool documentation
-│   ├── guides/                   # Tutorials and best practices
-│   ├── reference/                # API docs and technical references
 │   ├── community/                # Contributing and community resources
+│   ├── development/              # Technical docs and architecture
 │   └── index.md                  # Home page
 ├── overrides/                     # MkDocs theme customizations
 │   ├── main.html                # Custom HTML template
@@ -90,8 +89,8 @@ Fails the build if there are broken links or references.
 
 ### Theme and Branding
 The documentation uses a custom MkDocs Material theme with UCLI Tools branding:
-- **Primary Color**: Yellow (`#fbbf24`)
-- **Logo**: Terminal icon with yellow accent
+- **Primary Color**: Orange (`#ea580c`)
+- **Logo**: Terminal icon with orange accent
 - **Dark Mode**: Slate theme optimized for developer experience
 
 ### Custom Components
