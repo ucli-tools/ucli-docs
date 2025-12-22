@@ -152,14 +152,15 @@ We recognize all contributors through:
 ## 📞 Contact Information
 
 ### Official Contacts
-- **Email**: contact@ucli.tools *(planned)*
-- **Security**: security@ucli.tools *(planned)*
-- **Press**: press@ucli.tools *(planned)*
+- **Security Issues**: security@ucli.tools
+- **Support**: support@ucli.tools
+- **General Contact**: contact@ucli.tools
+- **Enterprise**: enterprise@ucli.tools
 
 ### Emergency Contacts
-- **Security Issues**: See [Security Policy](security.md)
-- **Critical Bugs**: Create high-priority GitHub issue
-- **Legal**: legal@ucli.tools *(planned)*
+- **Security Vulnerabilities**: security@ucli.tools (see [Security Policy](security.md))
+- **Critical System Issues**: support@ucli.tools
+- **Legal Matters**: legal@ucli.tools *(planned)*
 
 ## 🎯 Future Community Plans
 
