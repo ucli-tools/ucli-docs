@@ -1,6 +1,6 @@
 # Contact & Community
 
-[![GitHub Discussions](https://img.shields.io/github/discussions/ucli-tools/ucli)](https://github.com/orgs/ucli-tools/discussions)
+[![GitHub Discussions](https://img.shields.io/github/discussions/ucli-tools/community)](https://github.com/ucli-tools/community/discussions)
 [![GitHub issues](https://img.shields.io/github/issues/ucli-tools/ucli)](https://github.com/ucli-tools/ucli/issues)
 
 Get in touch with the UCLI Tools community! We're here to help, collaborate, and build amazing tools together.
@@ -22,7 +22,7 @@ Our primary community forum for:
 - Show and tell
 - General discussion
 
-[![Join the discussion](https://img.shields.io/badge/Join%20the%20discussion-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/orgs/ucli-tools/discussions)
+[![Join the discussion](https://img.shields.io/badge/Join%20the%20discussion-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ucli-tools/community/discussions)
 
 #### 🐛 GitHub Issues
 For bug reports and technical issues:
@@ -36,7 +36,7 @@ For bug reports and technical issues:
 ### Quick Help
 1. **Check the Documentation**: [docs.ucli.tools](https://docs.ucli.tools)
 2. **Search Existing Issues**: Use GitHub search across all repositories
-3. **Ask in Discussions**: Post in [GitHub Discussions](https://github.com/orgs/ucli-tools/discussions)
+3. **Ask in Discussions**: Post in [GitHub Discussions](https://github.com/ucli-tools/community/discussions)
 
 ### Before Asking
 - **Search first**: Check if your question has been asked before

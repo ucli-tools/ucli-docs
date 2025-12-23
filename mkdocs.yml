@@ -101,7 +101,7 @@ extra:
       link: https://github.com/ucli-tools
       name: UCLI Tools on GitHub
     - icon: fontawesome/solid/comments
-      link: https://github.com/orgs/ucli-tools/discussions
+      link: https://github.com/ucli-tools/community/discussions
       name: Join our community
     - icon: fontawesome/solid/download
       link: https://install.ucli.tools
