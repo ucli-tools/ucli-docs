@@ -679,7 +679,7 @@ Templates use standard LaTeX with placeholders:
 
 - **Documentation**: [docs.ucli.tools/tools/mdtexpdf](https://docs.ucli.tools/tools/mdtexpdf)
 - **Issues**: [GitHub Issues](https://github.com/ucli-tools/mdtexpdf/issues)
-- **Discussions**: [Community Forums](https://github.com/orgs/ucli-tools/discussions)
+- **Discussions**: [Community Forums](https://github.com/ucli-tools/community/discussions)
 
 ## License
 

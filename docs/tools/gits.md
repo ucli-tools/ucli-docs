@@ -604,7 +604,7 @@ make test
 
 - **Documentation**: [docs.ucli.tools/tools/gits](https://docs.ucli.tools/tools/gits)
 - **Issues**: [GitHub Issues](https://github.com/ucli-tools/gits/issues)
-- **Discussions**: [Community Forums](https://github.com/orgs/ucli-tools/discussions)
+- **Discussions**: [Community Forums](https://github.com/ucli-tools/community/discussions)
 
 ## License
 

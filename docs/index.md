@@ -82,7 +82,7 @@ UCLI Tools is a professional suite of command-line utilities that brings togethe
 ## 🤝 Community & Support
 
 - **GitHub**: [ucli-tools](https://github.com/ucli-tools) - Source code and issue tracking
-- **Discussions**: [Community Forums](https://github.com/orgs/ucli-tools/discussions) - Help and discussions
+- **Discussions**: [Community Forums](https://github.com/ucli-tools/community/discussions) - Help and discussions
 - **Contributing**: [Contribution Guide](community/contributing.md) - How to contribute
 
 ## 📄 License

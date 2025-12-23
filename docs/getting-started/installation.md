@@ -238,7 +238,7 @@ If you encounter issues:
 
 1. **Check the troubleshooting guide** - [Common Issues](../guides/troubleshooting.md)
 2. **Search existing issues** - [GitHub Issues](https://github.com/ucli-tools/ucli/issues)
-3. **Ask the community** - [Community Discussions](https://github.com/orgs/ucli-tools/discussions)
+3. **Ask the community** - [Community Discussions](https://github.com/ucli-tools/community/discussions)
 
 ### System Requirements Check
 

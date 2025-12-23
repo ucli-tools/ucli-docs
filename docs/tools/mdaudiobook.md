@@ -593,7 +593,7 @@ Contribute new voice profiles by submitting PRs with:
 
 - **Documentation**: [docs.ucli.tools/tools/mdaudiobook](https://docs.ucli.tools/tools/mdaudiobook)
 - **Issues**: [GitHub Issues](https://github.com/ucli-tools/mdaudiobook/issues)
-- **Discussions**: [Community Forums](https://github.com/orgs/ucli-tools/discussions)
+- **Discussions**: [Community Forums](https://github.com/ucli-tools/community/discussions)
 
 ## License
 

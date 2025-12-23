@@ -114,7 +114,7 @@ Tools work together seamlessly:
 
 ### Community Resources
 - [GitHub Organization](https://github.com/ucli-tools)
-- [Community Discussions](https://github.com/orgs/ucli-tools/discussions)
+- [Community Discussions](https://github.com/ucli-tools/community/discussions)
 - [Documentation Site](https://docs.ucli.tools)
 - [Main Website](https://ucli.tools)
 

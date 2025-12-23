@@ -202,7 +202,7 @@ mkdocs serve --dev-addr=127.0.0.1:8001
 - [MkDocs Documentation](https://www.mkdocs.org/)
 - [Material Theme Guide](https://squidfunk.github.io/mkdocs-material/)
 - [GitHub Issues](https://github.com/ucli-tools/ucli-docs/issues)
-- [Community Discussions](https://github.com/orgs/ucli-tools/discussions)
+- [Community Discussions](https://github.com/ucli-tools/community/discussions)
 
 ## 📄 License
 

@@ -367,7 +367,7 @@ See our [Contributing Guide](../community/contributing.md) for details.
 
 - **Documentation**: [docs.ucli.tools](https://docs.ucli.tools)
 - **Issues**: [GitHub Issues](https://github.com/ucli-tools/ucli/issues)
-- **Discussions**: [Community Forums](https://github.com/orgs/ucli-tools/discussions)
+- **Discussions**: [Community Forums](https://github.com/ucli-tools/community/discussions)
 
 ## License
 
