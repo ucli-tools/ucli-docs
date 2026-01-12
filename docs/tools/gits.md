@@ -9,13 +9,16 @@
 
 GitS provides developers with a unified interface for common Git operations across multiple platforms. Whether you're working with GitHub, Gitea, or Forgejo, `gits` offers consistent commands and intelligent automation.
 
+**Manage 10+ repositories in seconds** - From feature branches to merged PRs with just a few commands.
+
 ## Key Features
 
 - **Multi-Platform Support** - Works with Forgejo, Gitea, and GitHub
-- **Batch Operations** - Perform actions across multiple repositories
-- **AI-Powered Commits** - Integration with AI commit message generation
+- **Batch Operations** - Perform actions across multiple repositories simultaneously
+- **PR Batch Management** - Create and merge pull requests across all repositories with smart diff detection
+- **AI-Powered Commits** - Integration with [Pal](https://github.com/scottyeager/Pal/) for intelligent commit message generation
 - **Parallel Processing** - Concurrent operations for better performance
-- **Smart Conflict Detection** - Advanced merge conflict handling
+- **Smart Diff Detection** - Only acts on repositories with actual changes
 - **Repository Management** - Create, clone, and manage repositories
 - **Issue Management** - Fetch and save issues from repositories
 - **Pull Request Workflow** - Complete PR lifecycle management
@@ -50,6 +53,10 @@ make install
 - **curl** - HTTP requests
 - **gh** - GitHub CLI (for GitHub operations)
 - **tea** - Gitea CLI (for Gitea operations)
+
+### Optional Tools
+
+- **pal** - AI-powered commit message generation ([Pal by Scott Yeager](https://github.com/scottyeager/Pal/))
 
 ### Platform-Specific Requirements
 
@@ -98,7 +105,7 @@ Stages all changes, prompts for commit message, commits, and pushes.
 ```bash
 gits up
 ```
-Executes: `git add . && pal /commit -y && git push` (requires `pal` tool)
+Executes: `git add . && pal /commit -y && git push` (requires [Pal](https://github.com/scottyeager/Pal/))
 
 ### Repository Management
 
@@ -139,9 +146,12 @@ gits push-all
 # Batch mode with message
 gits push-all --batch -m "Update documentation"
 
-# With AI commit messages
+# With AI commit messages (via Pal)
 gits push-all -py
 ```
+
+!!! tip "AI-Powered Commits with Pal"
+    The `-py` flag uses [Pal by Scott Yeager](https://github.com/scottyeager/Pal/) to automatically generate meaningful commit messages based on your changes. This is the fastest way to commit across multiple repositories.
 
 #### Status Check Across Repositories
 ```bash
@@ -150,6 +160,9 @@ gits status-all
 
 # Show all repositories
 gits status-all --all
+
+# List repos with branch info
+gits list-all
 ```
 
 #### Pull Updates
@@ -162,6 +175,18 @@ gits pull-all --strategy rebase
 
 # Fast-forward only
 gits pull-all --strategy ff-only
+```
+
+#### Compare Branches Across Repositories
+```bash
+# Compare branches
+gits diff-all main feature-branch
+
+# Use suffix mode (auto-detect default branches)
+gits diff-all --suffix -feature
+
+# Quiet mode - only show repos with differences
+gits diff-all main develop --quiet
 ```
 
 ### Branch Management
@@ -178,7 +203,11 @@ gits delete <branch-name>
 
 #### Align Branches Across Repositories
 ```bash
+# Set all repos to same branch
 gits set-all <branch-name>
+
+# Rename branches with suffix
+gits set-all --suffix -feature
 ```
 
 ### Pull Request Management
@@ -197,6 +226,82 @@ gits pr close
 #### Merge Pull Request
 ```bash
 gits pr merge
+```
+
+#### Create PRs Across All Repositories
+```bash
+# Dry run to preview what would be created
+gits pr create-all --title "Feature X" --base main --dry-run
+
+# Create PRs using suffix mode (e.g., main-qr → main)
+gits pr create-all --title "QR Feature" --base main --suffix -qr
+
+# Create PRs with explicit head branch
+gits pr create-all --title "Update" --base main --head feature-branch
+
+# Create PRs with description
+gits pr create-all --title "Fix" --base main --body "Bug fixes and improvements"
+```
+
+!!! info "Smart Diff Detection"
+    `pr create-all` only creates PRs for repositories that have actual differences between the head and base branches. Repositories without changes are automatically skipped.
+
+!!! tip "Why Use `--suffix` Mode?"
+    The `--suffix` mode is powerful when working with repositories that have **different default branches**. For example:
+    
+    - `repo-backend` uses `main` as default → creates PR from `main-feature` → `main`
+    - `repo-frontend` uses `development` as default → creates PR from `development-feature` → `development`
+    - `repo-docs` uses `main` as default → creates PR from `main-feature` → `main`
+    
+    With `--suffix -feature`, GitS **auto-detects each repo's default branch** and applies the suffix. You don't need to worry about which repos use `main` vs `development` vs `master` - it just works!
+    
+    ```bash
+    # This handles mixed default branches automatically
+    gits pr create-all --title "Feature" --suffix -feature
+    
+    # Equivalent to manually running in each repo:
+    # repo-backend:  PR main-feature → main
+    # repo-frontend: PR development-feature → development  
+    # repo-docs:     PR main-feature → main
+    ```
+
+**Options:**
+
+| Option | Description |
+|--------|-------------|
+| `--title` | PR title (required) |
+| `--base` | Target branch to merge into (omit when using `--suffix` for auto-detection) |
+| `--suffix` | Branch suffix mode - auto-detects default branch per repo (e.g., `-qr`, `-feature`) |
+| `--head` | Explicit head branch name (use instead of `--suffix` for same branch across all repos) |
+| `--body` | PR description |
+| `--dry-run` | Preview without creating PRs |
+
+#### Merge PRs Across All Repositories
+```bash
+# Dry run to preview
+gits pr merge-all --dry-run
+
+# Merge all open PRs
+gits pr merge-all
+
+# Merge and delete branches after
+gits pr merge-all --delete-branch
+```
+
+**Options:**
+
+| Option | Description |
+|--------|-------------|
+| `--delete-branch`, `-d` | Delete head branch after merge |
+| `--dry-run` | Preview without merging |
+
+#### Get Latest PR Number
+```bash
+gits pr-latest
+```
+Returns the latest PR number for the current repository. Useful for scripting:
+```bash
+gits pr merge --pr-number $(gits pr-latest)
 ```
 
 ### Issue Management
@@ -254,6 +359,155 @@ gits token show <server>
 gits token clear <server>
 ```
 
+## AI-Powered Commits with Pal
+
+GitS integrates with [**Pal**](https://github.com/scottyeager/Pal/) by Scott Yeager for AI-powered commit message generation. This integration makes committing changes across multiple repositories incredibly fast and meaningful.
+
+### How It Works
+
+When you use the `-p` or `-py` flags, GitS invokes Pal to analyze your staged changes and generate a descriptive commit message:
+
+```bash
+# Interactive mode - review commit message before committing
+gits push-all -p
+
+# Auto-commit mode - generate and commit immediately
+gits push-all -py
+
+# Quick workflow with AI
+gits up  # Equivalent to: git add . && pal /commit -y && git push
+```
+
+### Installing Pal
+
+To use AI-powered commits, install Pal:
+
+```bash
+# See installation instructions at:
+# https://github.com/scottyeager/Pal/
+```
+
+### Example Workflow
+
+```bash
+# Make changes across multiple repos
+# ...
+
+# Push all with AI-generated commit messages
+gits push-all -py
+
+# Output:
+# 📁 ./backend - Analyzing changes...
+#    ✅ Committed: "Add user authentication middleware with JWT validation"
+# 📁 ./frontend - Analyzing changes...
+#    ✅ Committed: "Update login form with validation and error handling"
+# 📁 ./docs - Analyzing changes...
+#    ✅ Committed: "Document authentication flow and API endpoints"
+```
+
+## Complete Workflow Examples
+
+### Multi-Repository Feature Development
+
+A complete workflow from feature branch to merged PRs across an entire organization:
+
+```bash
+# 1. Clone all organization repositories
+gits clone-all myorg
+
+# 2. Create feature branch across all repos (using suffix)
+gits set-all --suffix -feature
+# This creates: main-feature, development-feature, etc. based on each repo's default
+
+# 3. Make changes in each repository
+# ... development work ...
+
+# 4. Push all changes with AI-generated commits (via Pal)
+gits push-all -py
+
+# 5. Preview PR creation (suffix auto-detects default branches)
+gits pr create-all --title "New Feature" --suffix -feature --dry-run
+# Shows: repo-api (main-feature → main), repo-web (development-feature → development), etc.
+
+# 6. Create PRs across all repos with differences
+gits pr create-all --title "New Feature" --suffix -feature
+# Each PR targets the correct default branch automatically!
+
+# 7. After code review, merge all PRs
+gits pr merge-all --delete-branch
+
+# 8. Switch back to default branches
+gits set-all --suffix ""  # or manually: gits set-all main
+```
+
+!!! tip "The Power of `--suffix`"
+    Notice we use `--suffix -feature` throughout. This means:
+    
+    - Repos with `main` as default: work on `main-feature`, PR to `main`
+    - Repos with `development` as default: work on `development-feature`, PR to `development`
+    - Repos with `master` as default: work on `master-feature`, PR to `master`
+    
+    **One command, any mix of default branches. No manual tracking needed.**
+
+### Daily Development Routine
+
+```bash
+# Morning: Pull latest changes
+gits pull-all
+
+# Check status across repos
+gits status-all
+
+# Work on features...
+
+# End of day: Push changes with AI commits
+gits push-all -py
+```
+
+### Repository Maintenance
+
+```bash
+#!/bin/bash
+# Weekly repo maintenance
+
+echo "🧹 Starting repository maintenance..."
+
+# Fetch all updates
+gits fetch-all --no-tags
+
+# Check status
+gits status-all
+
+# Check for open issues
+gits fetch-issues-all --state open
+
+echo "✅ Maintenance complete!"
+```
+
+### Microservices Dependency Update
+
+```bash
+# Update a shared dependency across 20 microservices
+
+# 1. Ensure all repos are clean
+gits status-all
+
+# 2. Create update branch
+gits set-all deps-update
+
+# 3. Update dependencies in each repo
+# ... run update scripts ...
+
+# 4. Commit all with descriptive message
+gits push-all --batch -m "chore: bump shared-lib to v2.0.0"
+
+# 5. Create PRs
+gits pr create-all --title "Bump shared-lib to v2.0.0" --base main
+
+# 6. After CI passes, merge all
+gits pr merge-all --delete-branch
+```
+
 ## Platform-Specific Features
 
 ### GitHub Integration
@@ -300,65 +554,6 @@ MAX_CONCURRENT=10
 AUTO_RESOLVE_CONFLICTS=false
 ```
 
-## Advanced Usage
-
-### CI/CD Integration
-
-#### Automated Repository Management
-```bash
-#!/bin/bash
-# CI script for repository maintenance
-
-# Update all repositories
-gits pull-all --strategy rebase
-
-# Run tests across repos
-find . -name ".git" -type d -execdir make test \;
-
-# Push changes with AI commits
-gits push-all -py
-```
-
-#### Deployment Automation
-```bash
-#!/bin/bash
-# Deployment script
-
-# Ensure all repos are on main branch
-gits set-all main
-
-# Pull latest changes
-gits pull-all --strategy ff-only
-
-# Deploy applications
-# ... deployment logic ...
-```
-
-### Development Workflow
-
-#### Feature Branch Workflow
-```bash
-# Start new feature
-gits new feature/amazing-feature
-
-# Work across multiple repos
-# ... development work ...
-
-# Commit with AI assistance
-gits push-all -py
-
-# Create PRs
-gits pr create
-```
-
-#### Repository Maintenance
-```bash
-# Weekly maintenance script
-gits fetch-all --no-tags
-gits status-all
-gits clean-old-branches
-```
-
 ## Troubleshooting
 
 ### Common Issues
@@ -398,16 +593,6 @@ git add <resolved-files>
 git commit
 ```
 
-#### Network Issues
-
-```bash
-# Check connectivity
-curl -I https://api.github.com
-
-# Use different protocol
-git config --global url."https://".insteadOf git://
-```
-
 ### Debug Mode
 
 Enable verbose output:
@@ -415,67 +600,6 @@ Enable verbose output:
 ```bash
 export GITS_DEBUG=true
 gits pull
-```
-
-### Performance Optimization
-
-```bash
-# Increase concurrent operations
-export MAX_CONCURRENT=10
-
-# Disable tags for faster fetches
-gits fetch-all --no-tags
-```
-
-## Examples
-
-### Complete Development Workflow
-
-```bash
-# 1. Set up workspace
-mkdir ~/projects
-cd ~/projects
-
-# 2. Clone organization repositories
-gits clone-all ucli-tools
-
-# 3. Start new feature
-gits set-all feature/new-feature
-
-# 4. Make changes across repos
-# ... development work ...
-
-# 5. Commit with AI assistance
-gits push-all -py
-
-# 6. Create pull requests
-find . -name ".git" -type d -execdir gits pr create \;
-
-# 7. Monitor progress
-gits status-all
-```
-
-### Repository Maintenance
-
-```bash
-#!/bin/bash
-# Weekly repo maintenance
-
-echo "🧹 Starting repository maintenance..."
-
-# Update all repos
-gits fetch-all --no-tags
-
-# Clean old branches
-gits delete-old-branches
-
-# Update dependencies
-find . -name "Makefile" -execdir make update-deps \;
-
-# Check for issues
-gits fetch-issues-all --state open
-
-echo "✅ Maintenance complete!"
 ```
 
 ## Integration with Other Tools
@@ -493,13 +617,17 @@ Add to `.vscode/tasks.json`:
       "command": "gits",
       "args": ["pull-all"],
       "group": "build"
+    },
+    {
+      "label": "Git Push All (AI)",
+      "type": "shell",
+      "command": "gits",
+      "args": ["push-all", "-py"],
+      "group": "build"
     }
   ]
 }
 ```
-
-#### JetBrains IDEs
-Create external tools for common `gits` commands.
 
 ### Shell Integration
 
@@ -508,11 +636,14 @@ Add to `~/.bashrc` or `~/.zshrc`:
 # Quick git status across repos
 alias gs='gits status-all'
 
-# Fast push all
+# Fast push all with AI commits
 alias gpa='gits push-all -py'
 
 # Pull everything
 alias gpl='gits pull-all'
+
+# Create PRs across repos
+alias gpr='gits pr create-all'
 ```
 
 ### CI/CD Pipelines
@@ -535,7 +666,7 @@ update-repos:
 
 ## Security Considerations
 
-- **Token Storage**: Tokens stored securely with 600 permissions
+- **Token Storage**: Tokens stored securely with 600 permissions in `~/.config/gits/tokens.conf`
 - **HTTPS Only**: All operations use HTTPS for security
 - **Audit Trail**: Command logging for accountability
 - **Access Control**: Platform-specific permission validation
@@ -566,25 +697,18 @@ make install-dev
 - Add error handling for all operations
 - Include documentation for new features
 
-### Testing
-
-```bash
-# Run unit tests
-make test-unit
-
-# Run integration tests
-make test-integration
-
-# Run all tests
-make test
-```
-
 ## Changelog
+
+### Version 2.1.0
+- **PR Batch Management**: New `pr create-all` and `pr merge-all` commands
+- **Smart Diff Detection**: Only creates PRs for repos with actual changes
+- **Suffix Mode**: Support for branch suffix patterns in PR operations
+- **Dry Run Support**: Preview batch operations before executing
 
 ### Version 2.0.0
 - Multi-platform support (Forgejo, Gitea, GitHub)
 - Parallel processing for batch operations
-- AI-powered commit messages
+- AI-powered commit messages via Pal integration
 - Enhanced error handling
 - Improved documentation
 
@@ -605,6 +729,10 @@ make test
 - **Documentation**: [docs.ucli.tools/tools/gits](https://docs.ucli.tools/tools/gits)
 - **Issues**: [GitHub Issues](https://github.com/ucli-tools/gits/issues)
 - **Discussions**: [Community Forums](https://github.com/ucli-tools/community/discussions)
+
+## Credits
+
+- **Pal** by [Scott Yeager](https://github.com/scottyeager/Pal/) - AI-powered commit message generation
 
 ## License
 
