@@ -341,118 +341,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/quickstart.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Start
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/concepts.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Core Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/faq.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    FAQ
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/glossary.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glossary
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -3537,7 +3425,7 @@ d.onchange=s})()</script>
 <li><strong>Multi-Format Support</strong> - Articles, books, and custom layouts</li>
 <li><strong>Unicode Support</strong> - Full CJK character support</li>
 <li><strong>Header/Footer Control</strong> - Three-tier policy system</li>
-<li><strong>Cross-Platform</strong> - Works on Linux, macOS, and Windows</li>
+<li><strong>Cross-Platform</strong> - Works on Linux and macOS; on Windows, use WSL</li>
 </ul>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <h3 id="via-ucli-recommended">Via UCLI (Recommended)<a class="headerlink" href="#via-ucli-recommended" title="Permanent link">&para;</a></h3>
@@ -3618,11 +3506,13 @@ d.onchange=s})()</script>
 <p>Run without arguments for interactive mode:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mdtexpdf
 </code></pre></div></p>
-<p>The interactive mode will prompt for:
-- Document title and author
-- Template selection
-- Output filename
-- Additional options</p>
+<p>The interactive mode will prompt for:</p>
+<ul>
+<li>Document title and author</li>
+<li>Template selection</li>
+<li>Output filename</li>
+<li>Additional options</li>
+</ul>
 <h3 id="creating-new-documents">Creating New Documents<a class="headerlink" href="#creating-new-documents" title="Permanent link">&para;</a></h3>
 <h4 id="generate-template-document">Generate Template Document<a class="headerlink" href="#generate-template-document" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>mdtexpdf<span class="w"> </span>create<span class="w"> </span>new-document.md
@@ -3630,11 +3520,13 @@ d.onchange=s})()</script>
 <h4 id="create-with-metadata">Create with Metadata<a class="headerlink" href="#create-with-metadata" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mdtexpdf<span class="w"> </span>create<span class="w"> </span>new-document.md<span class="w"> </span><span class="s2">"Document Title"</span><span class="w"> </span><span class="s2">"Author Name"</span>
 </code></pre></div>
-<p>This creates a new Markdown file with:
-- YAML frontmatter template
-- Sample content sections
-- LaTeX math examples
-- Code block examples</p>
+<p>This creates a new Markdown file with:</p>
+<ul>
+<li>YAML frontmatter template</li>
+<li>Sample content sections</li>
+<li>LaTeX math examples</li>
+<li>Code block examples</li>
+</ul>
 <h2 id="document-configuration">Document Configuration<a class="headerlink" href="#document-configuration" title="Permanent link">&para;</a></h2>
 <h3 id="yaml-frontmatter">YAML Frontmatter<a class="headerlink" href="#yaml-frontmatter" title="Permanent link">&para;</a></h3>
 <p>Add metadata to your Markdown documents:</p>
@@ -3747,11 +3639,13 @@ d.onchange=s})()</script>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>mdtexpdf<span class="w"> </span>convert<span class="w"> </span>--template<span class="w"> </span>custom.tex<span class="w"> </span>document.md
 </code></pre></div>
 <h4 id="template-structure">Template Structure<a class="headerlink" href="#template-structure" title="Permanent link">&para;</a></h4>
-<p>Templates should include:
-- Document class definition
-- Package imports
-- Page layout settings
-- Custom commands and environments</p>
+<p>Templates should include:</p>
+<ul>
+<li>Document class definition</li>
+<li>Package imports</li>
+<li>Page layout settings</li>
+<li>Custom commands and environments</li>
+</ul>
 <h3 id="batch-processing">Batch Processing<a class="headerlink" href="#batch-processing" title="Permanent link">&para;</a></h3>
 <h4 id="convert-multiple-files">Convert Multiple Files<a class="headerlink" href="#convert-multiple-files" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Convert all .md files in directory</span>

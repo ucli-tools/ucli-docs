@@ -337,118 +337,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/quickstart.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Start
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/concepts.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Core Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/faq.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    FAQ
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/glossary.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glossary
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1165,16 +1053,20 @@ provides information for AI systems to understand and work with this pattern.</p
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">$(</span>INSTALL_NAME<span class="k">)</span><span class="w"> </span>uninstall
 </code></pre></div></p>
 <h2 id="bash-script-structure">Bash Script Structure<a class="headerlink" href="#bash-script-structure" title="Permanent link">&para;</a></h2>
-<p>Each tool's bash script should include these standard functions:
-*   <code>install()</code>      - Installs the tool to <code>/usr/local/bin</code>
-*   <code>uninstall()</code>    - Removes the tool from <code>/usr/local/bin</code>
-*   <code>help()</code>         - Displays help information
-*   <code>main()</code>         - Main execution logic with command handling</p>
+<p>Each tool's bash script should include these standard functions:</p>
+<ul>
+<li><code>install()</code>      - Installs the tool to <code>/usr/local/bin</code></li>
+<li><code>uninstall()</code>    - Removes the tool from <code>/usr/local/bin</code></li>
+<li><code>help()</code>         - Displays help information</li>
+<li><code>main()</code>         - Main execution logic with command handling</li>
+</ul>
 <h2 id="ucli-integration">UCLI Integration<a class="headerlink" href="#ucli-integration" title="Permanent link">&para;</a></h2>
-<p>Tools are designed to be built and managed through the UCLI command:
-*   <code>ucli build toolname</code>    - Builds and installs the tool
-*   <code>ucli list</code>              - Lists available tools
-*   <code>ucli update</code>            - Updates all installed tools</p>
+<p>Tools are designed to be built and managed through the UCLI command:</p>
+<ul>
+<li><code>ucli build toolname</code>    - Builds and installs the tool</li>
+<li><code>ucli list</code>              - Lists available tools</li>
+<li><code>ucli update</code>            - Updates all installed tools</li>
+</ul>
 <h2 id="best-practices-for-ai-generated-tools">Best Practices for AI-Generated Tools<a class="headerlink" href="#best-practices-for-ai-generated-tools" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Follow the standard directory structure.</li>

@@ -341,118 +341,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/quickstart.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Start
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/concepts.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Core Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/faq.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    FAQ
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/glossary.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glossary
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2320,26 +2208,25 @@ d.onchange=s})()</script>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ucli<span class="w"> </span><span class="nb">help</span>
 </code></pre></div>
 <h3 id="manual-install">Manual Install<a class="headerlink" href="#manual-install" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Download the script</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/ucli-tools/ucli/main/ucli.sh
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>chmod<span class="w"> </span>+x<span class="w"> </span>ucli.sh
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Install system-wide</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>./ucli.sh<span class="w"> </span>install
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Or install to user directory</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>./ucli.sh<span class="w"> </span>install<span class="w"> </span>--user
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ucli-tools/ucli.git
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>ucli
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Installs to ~/.local/bin, no sudo</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>make<span class="w"> </span>build
 </code></pre></div>
+<p>If ucli is already in <code>/usr/local/bin</code>, it is updated there. <code>ucli install --move</code> moves it to <code>~/.local/bin</code>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="interactive-mode">Interactive Mode<a class="headerlink" href="#interactive-mode" title="Permanent link">&para;</a></h3>
 <p>Run <code>ucli</code> without arguments to enter the interactive menu:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ucli
 </code></pre></div>
-<p>The interactive menu provides options to:
-- Login to your GitHub organization
-- Build and install tools
-- Logout from your organization
-- Exit the tool</p>
+<p>The interactive menu provides options to:</p>
+<ul>
+<li>Login to your GitHub organization</li>
+<li>Build and install tools</li>
+<li>Logout from your organization</li>
+<li>Exit the tool</li>
+</ul>
 <h3 id="command-line-mode">Command-Line Mode<a class="headerlink" href="#command-line-mode" title="Permanent link">&para;</a></h3>
 <p><code>ucli</code> supports various command-line options for automation:</p>
 <h4 id="core-commands">Core Commands<a class="headerlink" href="#core-commands" title="Permanent link">&para;</a></h4>
@@ -2371,10 +2258,12 @@ d.onchange=s})()</script>
 <p>Before building tools, you need to authenticate with your GitHub organization:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ucli<span class="w"> </span>login
 </code></pre></div>
-<p>This will:
-1. Prompt for your GitHub organization name
-2. Store the organization in the <code>ORG</code> environment variable
-3. Enable access to private repositories (if applicable)</p>
+<p>This will:</p>
+<ol>
+<li>Prompt for your GitHub organization name</li>
+<li>Store the organization in the <code>ORG</code> environment variable</li>
+<li>Enable access to private repositories (if applicable)</li>
+</ol>
 <h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p><code>ucli</code> uses the following environment variables:</p>
 <ul>
