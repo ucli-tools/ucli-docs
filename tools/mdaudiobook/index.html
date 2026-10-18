@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3254,7 +3254,7 @@
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <h3 id="via-ucli-recommended">Via UCLI (Recommended)<a class="headerlink" href="#via-ucli-recommended" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install ucli tool manager first</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.ucli.tools<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.ucli.tools/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Install mdaudiobook</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ucli<span class="w"> </span>build<span class="w"> </span>mdaudiobook
@@ -3290,7 +3290,7 @@
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Install TTS</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>pip<span class="w"> </span>install<span class="w"> </span>pyttsx3
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># OR use macOS built-in &#39;say&#39; command</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># OR use macOS built-in 'say' command</span>
 </code></pre></div>
 <h4 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Install Python from python.org</span>
@@ -3367,11 +3367,11 @@
 <h4 id="metadata-extraction">Metadata Extraction<a class="headerlink" href="#metadata-extraction" title="Permanent link">&para;</a></h4>
 <p>YAML frontmatter is used for audiobook metadata:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nn">---</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My</span><span class="nv"> </span><span class="s">Audiobook&quot;</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Author</span><span class="nv"> </span><span class="s">Name&quot;</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A</span><span class="nv"> </span><span class="s">great</span><span class="nv"> </span><span class="s">audiobook&quot;</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en&quot;</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2h</span><span class="nv"> </span><span class="s">30m&quot;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"My</span><span class="nv"> </span><span class="s">Audiobook"</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">"Author</span><span class="nv"> </span><span class="s">Name"</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"A</span><span class="nv"> </span><span class="s">great</span><span class="nv"> </span><span class="s">audiobook"</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">"en"</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="s">"2h</span><span class="nv"> </span><span class="s">30m"</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nn">---</span>
 </code></pre></div></p>
 <h2 id="voice-and-audio-configuration">Voice and Audio Configuration<a class="headerlink" href="#voice-and-audio-configuration" title="Permanent link">&para;</a></h2>
@@ -3381,8 +3381,8 @@
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>mdaudiobook<span class="w"> </span>voices
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Use specific voice</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>doc.md<span class="w"> </span>--voice<span class="w"> </span><span class="s2">&quot;Zira&quot;</span><span class="w">  </span><span class="c1"># Windows</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>doc.md<span class="w"> </span>--voice<span class="w"> </span><span class="s2">&quot;Alex&quot;</span><span class="w">  </span><span class="c1"># macOS</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>doc.md<span class="w"> </span>--voice<span class="w"> </span><span class="s2">"Zira"</span><span class="w">  </span><span class="c1"># Windows</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>doc.md<span class="w"> </span>--voice<span class="w"> </span><span class="s2">"Alex"</span><span class="w">  </span><span class="c1"># macOS</span>
 </code></pre></div>
 <h4 id="tts-engine-configuration">TTS Engine Configuration<a class="headerlink" href="#tts-engine-configuration" title="Permanent link">&para;</a></h4>
 <p><strong>eSpeak-ng (Cross-platform):</strong>
@@ -3420,9 +3420,9 @@
 <h4 id="rss-feed-generation">RSS Feed Generation<a class="headerlink" href="#rss-feed-generation" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Generate podcast RSS feed</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>mdaudiobook<span class="w"> </span>podcast-generate<span class="w"> </span>chapters/<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--title<span class="w"> </span><span class="s2">&quot;My Podcast&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span>--description<span class="w"> </span><span class="s2">&quot;Weekly episodes&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span>--feed-url<span class="w"> </span><span class="s2">&quot;https://example.com/feed.xml&quot;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--title<span class="w"> </span><span class="s2">"My Podcast"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span>--description<span class="w"> </span><span class="s2">"Weekly episodes"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span>--feed-url<span class="w"> </span><span class="s2">"https://example.com/feed.xml"</span>
 </code></pre></div>
 <h4 id="chapter-markers">Chapter Markers<a class="headerlink" href="#chapter-markers" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Add chapter markers for podcast apps</span>
@@ -3436,30 +3436,30 @@
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>README.md<span class="w"> </span>docs.mp3<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>--voice<span class="w"> </span>female<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span>--speed<span class="w"> </span><span class="m">0</span>.9<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>--metadata<span class="w"> </span><span class="s2">&quot;Project Documentation&quot;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>--metadata<span class="w"> </span><span class="s2">"Project Documentation"</span>
 </code></pre></div>
 <h4 id="educational-content">Educational Content<a class="headerlink" href="#educational-content" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Create narrated tutorials</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>tutorial.md<span class="w"> </span>tutorial.mp3<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span>--voice<span class="w"> </span>teacher<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span>--pause-duration<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">  </span>--chapter-marker<span class="w"> </span><span class="s2">&quot;##&quot;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">  </span>--chapter-marker<span class="w"> </span><span class="s2">"##"</span>
 </code></pre></div>
 <h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
 <h3 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h3>
 <p>Create <code>~/.config/mdaudiobook/config.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Default settings</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;female&quot;</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en-us&quot;</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">"female"</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">"en-us"</span>
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nt">speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mp3&quot;</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nt">bitrate</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;128k&quot;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"mp3"</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nt">bitrate</span><span class="p">:</span><span class="w"> </span><span class="s">"128k"</span>
 <a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nt">sample_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">44100</span>
 <a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="c1"># TTS engine settings</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="nt">tts_engine</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;espeak&quot;</span><span class="w">  </span><span class="c1"># espeak, festival, pyttsx3, system</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="nt">tts_engine</span><span class="p">:</span><span class="w"> </span><span class="s">"espeak"</span><span class="w">  </span><span class="c1"># espeak, festival, pyttsx3, system</span>
 <a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="nt">espeak</span><span class="p">:</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">  </span><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en-us&quot;</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">  </span><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">"en-us"</span>
 <a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">  </span><span class="nt">pitch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
 <a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">  </span><span class="nt">speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">175</span>
 <a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>
@@ -3472,14 +3472,14 @@
 <p>Define custom voice profiles:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">voices</span><span class="p">:</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="nt">narrator</span><span class="p">:</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;espeak&quot;</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en-gb&quot;</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="s">"espeak"</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">"en-gb"</span>
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="nt">speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="nt">pitch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
 <a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">  </span><span class="nt">character</span><span class="p">:</span>
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">    </span><span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;festival&quot;</span>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">    </span><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us3&quot;</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">    </span><span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="s">"festival"</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">    </span><span class="nt">voice</span><span class="p">:</span><span class="w"> </span><span class="s">"us3"</span>
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">    </span><span class="nt">speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1</span>
 <a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="w">    </span><span class="nt">pitch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 </code></pre></div>
@@ -3544,19 +3544,19 @@
 </code></pre></div>
 <h3 id="podcast-episode">Podcast Episode<a class="headerlink" href="#podcast-episode" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>---
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>title: &quot;Episode 1: Getting Started&quot;
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>author: &quot;Podcast Host&quot;
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>description: &quot;Introduction to our topic&quot;
-<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="gu">duration: &quot;25m 30s&quot;</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>title: "Episode 1: Getting Started"
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>author: "Podcast Host"
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>description: "Introduction to our topic"
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="gu">duration: "25m 30s"</span>
 <a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="gu">---</span>
 <a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
 <a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="gh"># Welcome to Our Podcast</span>
 <a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>
 <a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>Hello and welcome to the first episode...
 <a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>
-<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="gu">## Today&#39;s Topic</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="gu">## Today's Topic</span>
 <a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>
-<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>We&#39;ll be discussing...
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>We'll be discussing...
 <a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>
 <a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="gu">## Key Points</span>
 <a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>
@@ -3568,8 +3568,8 @@
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>episode1.md<span class="w"> </span>episode1.mp3<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">  </span>--voice<span class="w"> </span>male<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">  </span>--speed<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">  </span>--metadata<span class="w"> </span><span class="s2">&quot;Podcast Name - Episode 1&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">  </span>--author<span class="w"> </span><span class="s2">&quot;Host Name&quot;</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">  </span>--metadata<span class="w"> </span><span class="s2">"Podcast Name - Episode 1"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">  </span>--author<span class="w"> </span><span class="s2">"Host Name"</span>
 </code></pre></div>
 <h3 id="documentation-narration">Documentation Narration<a class="headerlink" href="#documentation-narration" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># Create narrated API documentation</span>
@@ -3585,8 +3585,8 @@
 <a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>mdaudiobook<span class="w"> </span>generate<span class="w"> </span>lecture.md<span class="w"> </span>lecture.mp3<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">  </span>--voice<span class="w"> </span>professor<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">  </span>--pause-duration<span class="w"> </span><span class="m">0</span>.7<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">  </span>--chapter-marker<span class="w"> </span><span class="s2">&quot;#&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">  </span>--metadata<span class="w"> </span><span class="s2">&quot;CS101 - Lecture 1&quot;</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">  </span>--chapter-marker<span class="w"> </span><span class="s2">"#"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">  </span>--metadata<span class="w"> </span><span class="s2">"CS101 - Lecture 1"</span>
 </code></pre></div>
 <h2 id="integration-examples">Integration Examples<a class="headerlink" href="#integration-examples" title="Permanent link">&para;</a></h2>
 <h3 id="documentation-pipeline">Documentation Pipeline<a class="headerlink" href="#documentation-pipeline" title="Permanent link">&para;</a></h3>
@@ -3605,9 +3605,9 @@
 <a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="w">  </span>--speed<span class="w"> </span><span class="m">1</span>.0
 <a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a>
 <a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a><span class="c1"># Create playlist</span>
-<a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Documentation Audio Guide&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>docs.m3u
-<a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;api-docs.mp3&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>docs.m3u
-<a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;changelog.mp3&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>docs.m3u
+<a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"# Documentation Audio Guide"</span><span class="w"> </span>&gt;<span class="w"> </span>docs.m3u
+<a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"api-docs.mp3"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>docs.m3u
+<a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"changelog.mp3"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>docs.m3u
 </code></pre></div>
 <h3 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">&para;</a></h3>
 <h4 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h4>
@@ -3617,7 +3617,7 @@
 <a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">    </span><span class="no">mdaudiobook generate README.md docs.mp3 \</span>
 <a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">      </span><span class="no">--voice female \</span>
 <a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">      </span><span class="no">--speed 0.9 \</span>
-<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="w">      </span><span class="no">--metadata &quot;Project Documentation&quot;</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="w">      </span><span class="no">--metadata "Project Documentation"</span>
 <a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload Audio</span>
 <a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v3</span>
 <a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="w">  </span><span class="nt">with</span><span class="p">:</span>
@@ -3629,21 +3629,21 @@
 <a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 <a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>
-<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_audio</span><span class="p">(</span><span class="n">content_file</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">voice</span><span class="o">=</span><span class="s2">&quot;female&quot;</span><span class="p">):</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_audio</span><span class="p">(</span><span class="n">content_file</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">voice</span><span class="o">=</span><span class="s2">"female"</span><span class="p">):</span>
 <a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>        <span class="s2">&quot;mdaudiobook&quot;</span><span class="p">,</span> <span class="s2">&quot;generate&quot;</span><span class="p">,</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>        <span class="s2">"mdaudiobook"</span><span class="p">,</span> <span class="s2">"generate"</span><span class="p">,</span>
 <a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>        <span class="n">content_file</span><span class="p">,</span>
-<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>        <span class="s2">&quot;--voice&quot;</span><span class="p">,</span> <span class="n">voice</span><span class="p">,</span>
-<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>        <span class="s2">&quot;--speed&quot;</span><span class="p">,</span> <span class="s2">&quot;0.9&quot;</span><span class="p">,</span>
-<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a>        <span class="s2">&quot;--output&quot;</span><span class="p">,</span> <span class="n">output_file</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>        <span class="s2">"--voice"</span><span class="p">,</span> <span class="n">voice</span><span class="p">,</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>        <span class="s2">"--speed"</span><span class="p">,</span> <span class="s2">"0.9"</span><span class="p">,</span>
+<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a>        <span class="s2">"--output"</span><span class="p">,</span> <span class="n">output_file</span>
 <a id="__codelineno-41-12" name="__codelineno-41-12" href="#__codelineno-41-12"></a>    <span class="p">]</span>
 <a id="__codelineno-41-13" name="__codelineno-41-13" href="#__codelineno-41-13"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-41-14" name="__codelineno-41-14" href="#__codelineno-41-14"></a>
 <a id="__codelineno-41-15" name="__codelineno-41-15" href="#__codelineno-41-15"></a><span class="c1"># Generate audio for all blog posts</span>
-<a id="__codelineno-41-16" name="__codelineno-41-16" href="#__codelineno-41-16"></a><span class="k">for</span> <span class="n">md_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;posts/&quot;</span><span class="p">):</span>
-<a id="__codelineno-41-17" name="__codelineno-41-17" href="#__codelineno-41-17"></a>    <span class="k">if</span> <span class="n">md_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.md&quot;</span><span class="p">):</span>
-<a id="__codelineno-41-18" name="__codelineno-41-18" href="#__codelineno-41-18"></a>        <span class="n">audio_file</span> <span class="o">=</span> <span class="n">md_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.md&quot;</span><span class="p">,</span> <span class="s2">&quot;.mp3&quot;</span><span class="p">)</span>
-<a id="__codelineno-41-19" name="__codelineno-41-19" href="#__codelineno-41-19"></a>        <span class="n">generate_audio</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;posts/</span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;audio/</span><span class="si">{</span><span class="n">audio_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-41-16" name="__codelineno-41-16" href="#__codelineno-41-16"></a><span class="k">for</span> <span class="n">md_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">"posts/"</span><span class="p">):</span>
+<a id="__codelineno-41-17" name="__codelineno-41-17" href="#__codelineno-41-17"></a>    <span class="k">if</span> <span class="n">md_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".md"</span><span class="p">):</span>
+<a id="__codelineno-41-18" name="__codelineno-41-18" href="#__codelineno-41-18"></a>        <span class="n">audio_file</span> <span class="o">=</span> <span class="n">md_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".md"</span><span class="p">,</span> <span class="s2">".mp3"</span><span class="p">)</span>
+<a id="__codelineno-41-19" name="__codelineno-41-19" href="#__codelineno-41-19"></a>        <span class="n">generate_audio</span><span class="p">(</span><span class="sa">f</span><span class="s2">"posts/</span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"audio/</span><span class="si">{</span><span class="n">audio_file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
 <h3 id="development-setup">Development Setup<a class="headerlink" href="#development-setup" title="Permanent link">&para;</a></h3>
@@ -3885,7 +3885,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

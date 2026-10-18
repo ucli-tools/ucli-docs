@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3667,7 +3667,7 @@
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <h3 id="via-ucli-recommended">Via UCLI (Recommended)<a class="headerlink" href="#via-ucli-recommended" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install ucli tool manager first</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.ucli.tools<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.ucli.tools/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Install mdtexpdf</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ucli<span class="w"> </span>build<span class="w"> </span>mdtexpdf
@@ -3720,7 +3720,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mdtexpdf<span class="w"> </span>convert<span class="w"> </span>document.md<span class="w"> </span>output.pdf
 </code></pre></div>
 <h4 id="convert-with-metadata">Convert with Metadata<a class="headerlink" href="#convert-with-metadata" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mdtexpdf<span class="w"> </span>convert<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;My Document&quot;</span><span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;Author Name&quot;</span><span class="w"> </span>document.md
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mdtexpdf<span class="w"> </span>convert<span class="w"> </span>-t<span class="w"> </span><span class="s2">"My Document"</span><span class="w"> </span>-a<span class="w"> </span><span class="s2">"Author Name"</span><span class="w"> </span>document.md
 </code></pre></div>
 <h3 id="command-line-options">Command-Line Options<a class="headerlink" href="#command-line-options" title="Permanent link">&para;</a></h3>
 <h4 id="document-information">Document Information<a class="headerlink" href="#document-information" title="Permanent link">&para;</a></h4>
@@ -3753,7 +3753,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>mdtexpdf<span class="w"> </span>create<span class="w"> </span>new-document.md
 </code></pre></div>
 <h4 id="create-with-metadata">Create with Metadata<a class="headerlink" href="#create-with-metadata" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mdtexpdf<span class="w"> </span>create<span class="w"> </span>new-document.md<span class="w"> </span><span class="s2">&quot;Document Title&quot;</span><span class="w"> </span><span class="s2">&quot;Author Name&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mdtexpdf<span class="w"> </span>create<span class="w"> </span>new-document.md<span class="w"> </span><span class="s2">"Document Title"</span><span class="w"> </span><span class="s2">"Author Name"</span>
 </code></pre></div>
 <p>This creates a new Markdown file with:
 - YAML frontmatter template
@@ -3764,22 +3764,22 @@
 <h3 id="yaml-frontmatter">YAML Frontmatter<a class="headerlink" href="#yaml-frontmatter" title="Permanent link">&para;</a></h3>
 <p>Add metadata to your Markdown documents:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nn">---</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Advanced</span><span class="nv"> </span><span class="s">Research</span><span class="nv"> </span><span class="s">Paper&quot;</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Dr.</span><span class="nv"> </span><span class="s">Jane</span><span class="nv"> </span><span class="s">Smith&quot;</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-12-22&quot;</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A</span><span class="nv"> </span><span class="s">Comprehensive</span><span class="nv"> </span><span class="s">Study&quot;</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jane.smith@university.edu&quot;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Advanced</span><span class="nv"> </span><span class="s">Research</span><span class="nv"> </span><span class="s">Paper"</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">"Dr.</span><span class="nv"> </span><span class="s">Jane</span><span class="nv"> </span><span class="s">Smith"</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-12-22"</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="s">"A</span><span class="nv"> </span><span class="s">Comprehensive</span><span class="nv"> </span><span class="s">Study"</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="s">"jane.smith@university.edu"</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
 <a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1"># Document structure</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;article&quot;</span><span class="w">                   </span><span class="c1"># &quot;article&quot; or &quot;book&quot;</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"article"</span><span class="w">                   </span><span class="c1"># "article" or "book"</span>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="nt">toc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                           </span><span class="c1"># Enable table of contents</span>
 <a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nt">toc_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w">                        </span><span class="c1"># TOC depth</span>
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="nt">section_numbers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">               </span><span class="c1"># Enable section numbering</span>
 <a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
 <a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1"># Headers and footers</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nt">header_footer_policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;all&quot;</span><span class="w">         </span><span class="c1"># &quot;default&quot;, &quot;partial&quot;, or &quot;all&quot;</span>
-<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="nt">footer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;©</span><span class="nv"> </span><span class="s">2025</span><span class="nv"> </span><span class="s">University.</span><span class="nv"> </span><span class="s">All</span><span class="nv"> </span><span class="s">rights</span><span class="nv"> </span><span class="s">reserved.&quot;</span>
-<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="nt">pageof</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                        </span><span class="c1"># &quot;Page X of Y&quot; format</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nt">header_footer_policy</span><span class="p">:</span><span class="w"> </span><span class="s">"all"</span><span class="w">         </span><span class="c1"># "default", "partial", or "all"</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="nt">footer</span><span class="p">:</span><span class="w"> </span><span class="s">"©</span><span class="nv"> </span><span class="s">2025</span><span class="nv"> </span><span class="s">University.</span><span class="nv"> </span><span class="s">All</span><span class="nv"> </span><span class="s">rights</span><span class="nv"> </span><span class="s">reserved."</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="nt">pageof</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                        </span><span class="c1"># "Page X of Y" format</span>
 <a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="nt">date_footer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                   </span><span class="c1"># Include date in footer</span>
 <a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="nn">---</span>
 </code></pre></div>
@@ -3826,15 +3826,15 @@
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>For a right triangle with legs <span class="s">$</span><span class="nb">a</span><span class="s">$</span> and <span class="s">$</span><span class="nb">b</span><span class="s">$</span>, and hypotenuse <span class="s">$</span><span class="nb">c</span><span class="s">$</span>.
 </code></pre></div>
 <h4 id="equation-environments">Equation Environments<a class="headerlink" href="#equation-environments" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">\frac</span><span class="nb">{</span>d<span class="nb">}{</span>dx<span class="nb">}</span> <span class="k">\int_a</span><span class="nb">^</span>x f(t) <span class="k">\,</span> dt = f(x)
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">\label</span><span class="nb">{</span>eq:fundamental-theorem<span class="nb">}</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">\begin</span><span class="nb">{equation}</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">\frac</span><span class="nb">{d}{dx} </span><span class="nv">\int</span><span class="nb">_a^x f</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="nv">\,</span><span class="nb"> dt </span><span class="o">=</span><span class="nb"> f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nv">\label</span><span class="nb">{eq:fundamental</span><span class="o">-</span><span class="nb">theorem}</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">\end</span><span class="nb">{equation}</span>
 </code></pre></div>
 <h3 id="code-highlighting">Code Highlighting<a class="headerlink" href="#code-highlighting" title="Permanent link">&para;</a></h3>
 <h4 id="syntax-highlighted-code-blocks">Syntax Highlighted Code Blocks<a class="headerlink" href="#syntax-highlighted-code-blocks" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Fibonacci sequence up to n terms.&quot;&quot;&quot;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="sd">"""Generate Fibonacci sequence up to n terms."""</span>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>        <span class="k">return</span> <span class="p">[]</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -3881,18 +3881,18 @@
 <h4 id="convert-multiple-files">Convert Multiple Files<a class="headerlink" href="#convert-multiple-files" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Convert all .md files in directory</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.md<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span>mdtexpdf<span class="w"> </span>convert<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span>mdtexpdf<span class="w"> </span>convert<span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="k">done</span>
 </code></pre></div>
 <h4 id="automation-scripts">Automation Scripts<a class="headerlink" href="#automation-scripts" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="c1"># Batch convert with consistent settings</span>
 <a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-t &#39;Research Papers&#39; -a &#39;Research Team&#39; --header-footer-policy all&quot;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">"-t 'Research Papers' -a 'Research Team' --header-footer-policy all"</span>
 <a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
 <a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>papers/*.md<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">    </span><span class="nv">output</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">file</span><span class="p">%.md</span><span class="si">}</span><span class="s2">.pdf&quot;</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span>mdtexpdf<span class="w"> </span>convert<span class="w"> </span><span class="nv">$OPTIONS</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$output</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">    </span><span class="nv">output</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">file</span><span class="p">%.md</span><span class="si">}</span><span class="s2">.pdf"</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span>mdtexpdf<span class="w"> </span>convert<span class="w"> </span><span class="nv">$OPTIONS</span><span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$output</span><span class="s2">"</span>
 <a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="k">done</span>
 </code></pre></div>
 <h3 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">&para;</a></h3>
@@ -3900,8 +3900,8 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate Documentation PDF</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="no">mdtexpdf convert README.md docs.pdf \</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">      </span><span class="no">-t &quot;Project Documentation&quot; \</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">      </span><span class="no">-a &quot;Development Team&quot; \</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">      </span><span class="no">-t "Project Documentation" \</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">      </span><span class="no">-a "Development Team" \</span>
 <a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">      </span><span class="no">--toc \</span>
 <a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">      </span><span class="no">--header-footer-policy all</span>
 </code></pre></div>
@@ -3930,11 +3930,11 @@
 <h3 id="institutional-styles">Institutional Styles<a class="headerlink" href="#institutional-styles" title="Permanent link">&para;</a></h3>
 <p>For universities or companies:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nn">---</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Thesis</span><span class="nv"> </span><span class="s">Title&quot;</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Student</span><span class="nv"> </span><span class="s">Name&quot;</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nt">institution</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;University</span><span class="nv"> </span><span class="s">Name&quot;</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nt">department</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Department</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Computer</span><span class="nv"> </span><span class="s">Science&quot;</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nt">degree</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Master</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Science&quot;</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Thesis</span><span class="nv"> </span><span class="s">Title"</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s">"Student</span><span class="nv"> </span><span class="s">Name"</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nt">institution</span><span class="p">:</span><span class="w"> </span><span class="s">"University</span><span class="nv"> </span><span class="s">Name"</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nt">department</span><span class="p">:</span><span class="w"> </span><span class="s">"Department</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Computer</span><span class="nv"> </span><span class="s">Science"</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nt">degree</span><span class="p">:</span><span class="w"> </span><span class="s">"Master</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Science"</span>
 <a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nn">---</span>
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
@@ -3989,13 +3989,13 @@
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <h3 id="academic-paper">Academic Paper<a class="headerlink" href="#academic-paper" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>---
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>title: &quot;Deep Learning Approaches for Natural Language Processing&quot;
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>author: &quot;Dr. Sarah Johnson&quot;
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>date: &quot;2025-12-22&quot;
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>format: &quot;article&quot;
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>title: "Deep Learning Approaches for Natural Language Processing"
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>author: "Dr. Sarah Johnson"
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>date: "2025-12-22"
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>format: "article"
 <a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>toc: true
 <a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>toc_depth: 2
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="gu">header_footer_policy: &quot;default&quot;</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="gu">header_footer_policy: "default"</span>
 <a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="gu">---</span>
 <a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>
 <a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="gh"># Introduction</span>
@@ -4024,13 +4024,13 @@
 </code></pre></div>
 <h3 id="technical-documentation">Technical Documentation<a class="headerlink" href="#technical-documentation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>---
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>title: &quot;API Reference Guide&quot;
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>author: &quot;Development Team&quot;
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>format: &quot;article&quot;
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>title: "API Reference Guide"
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>author: "Development Team"
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>format: "article"
 <a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>toc: true
 <a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>toc_depth: 3
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>header_footer_policy: &quot;all&quot;
-<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="gu">footer: &quot;© 2025 Company Name. All rights reserved.&quot;</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>header_footer_policy: "all"
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="gu">footer: "© 2025 Company Name. All rights reserved."</span>
 <a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="gu">---</span>
 <a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
 <a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="gh"># Authentication</span>
@@ -4038,11 +4038,11 @@
 <a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="gu">## Bearer Token Authentication</span>
 <a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>
 <a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>```bash
-<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>curl -H &quot;Authorization: Bearer YOUR_TOKEN&quot; \
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>curl -H "Authorization: Bearer YOUR_TOKEN" \
 <a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>     https://api.example.com/endpoint
 </code></pre></div>
 <h2 id="api-key-authentication">API Key Authentication<a class="headerlink" href="#api-key-authentication" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key: YOUR_API_KEY&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"X-API-Key: YOUR_API_KEY"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">     </span>https://api.example.com/endpoint
 </code></pre></div>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
@@ -4079,14 +4079,14 @@
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
 <a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>```markdown
 <a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>---
-<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>title: &quot;Mastering DevOps&quot;
-<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>author: &quot;Jane Smith&quot;
-<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>subtitle: &quot;A Comprehensive Guide&quot;
-<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>email: &quot;jane@techbooks.com&quot;
-<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>format: &quot;book&quot;
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>title: "Mastering DevOps"
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>author: "Jane Smith"
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>subtitle: "A Comprehensive Guide"
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>email: "jane@techbooks.com"
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>format: "book"
 <a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>toc: true
 <a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>toc_depth: 2
-<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>header_footer_policy: &quot;all&quot;
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>header_footer_policy: "all"
 <a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>---
 <a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>
 <a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a># Part I: Foundations
@@ -4097,7 +4097,7 @@
 <a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a>
 <a id="__codelineno-36-21" name="__codelineno-36-21" href="#__codelineno-36-21"></a>## The DevOps Culture
 <a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a>
-<a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a>DevOps is not just about tools; it&#39;s about culture...
+<a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a>DevOps is not just about tools; it's about culture...
 <a id="__codelineno-36-24" name="__codelineno-36-24" href="#__codelineno-36-24"></a>
 <a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a>## Key Principles
 <a id="__codelineno-36-26" name="__codelineno-36-26" href="#__codelineno-36-26"></a>
@@ -4409,7 +4409,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

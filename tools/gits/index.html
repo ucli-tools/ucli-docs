@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3486,7 +3486,7 @@
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <h3 id="via-ucli-recommended">Via UCLI (Recommended)<a class="headerlink" href="#via-ucli-recommended" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install ucli tool manager first</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.ucli.tools<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.ucli.tools/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Install gits</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ucli<span class="w"> </span>build<span class="w"> </span>gits
@@ -3569,7 +3569,7 @@ Interactive setup for new Git repositories with platform selection.</p>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>gits<span class="w"> </span>push-all
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Batch mode with message</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>gits<span class="w"> </span>push-all<span class="w"> </span>--batch<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update documentation&quot;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>gits<span class="w"> </span>push-all<span class="w"> </span>--batch<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Update documentation"</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># With AI commit messages (via Pal)</span>
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>gits<span class="w"> </span>push-all<span class="w"> </span>-py
@@ -3635,16 +3635,16 @@ Interactive PR creation with platform selection.</p>
 </code></pre></div>
 <h4 id="create-prs-across-all-repositories">Create PRs Across All Repositories<a class="headerlink" href="#create-prs-across-all-repositories" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Dry run to preview what would be created</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Feature X&quot;</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--dry-run
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"Feature X"</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--dry-run
 <a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># Create PRs using suffix mode (e.g., main-qr → main)</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;QR Feature&quot;</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--suffix<span class="w"> </span>-qr
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"QR Feature"</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--suffix<span class="w"> </span>-qr
 <a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
 <a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># Create PRs with explicit head branch</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Update&quot;</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--head<span class="w"> </span>feature-branch
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"Update"</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--head<span class="w"> </span>feature-branch
 <a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
 <a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># Create PRs with description</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Fix&quot;</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--body<span class="w"> </span><span class="s2">&quot;Bug fixes and improvements&quot;</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"Fix"</span><span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--body<span class="w"> </span><span class="s2">"Bug fixes and improvements"</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Smart Diff Detection</p>
@@ -3660,7 +3660,7 @@ Interactive PR creation with platform selection.</p>
 </ul>
 <p>With <code>--suffix -feature</code>, GitS <strong>auto-detects each repo's default branch</strong> and applies the suffix. You don't need to worry about which repos use <code>main</code> vs <code>development</code> vs <code>master</code> - it just works!</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># This handles mixed default branches automatically</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="w"> </span>--suffix<span class="w"> </span>-feature
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"Feature"</span><span class="w"> </span>--suffix<span class="w"> </span>-feature
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Equivalent to manually running in each repo:</span>
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># repo-backend:  PR main-feature → main</span>
@@ -3808,11 +3808,11 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>
 <a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="c1"># Output:</span>
 <a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="c1"># 📁 ./backend - Analyzing changes...</span>
-<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="c1">#    ✅ Committed: &quot;Add user authentication middleware with JWT validation&quot;</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="c1">#    ✅ Committed: "Add user authentication middleware with JWT validation"</span>
 <a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="c1"># 📁 ./frontend - Analyzing changes...</span>
-<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="c1">#    ✅ Committed: &quot;Update login form with validation and error handling&quot;</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="c1">#    ✅ Committed: "Update login form with validation and error handling"</span>
 <a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="c1"># 📁 ./docs - Analyzing changes...</span>
-<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="c1">#    ✅ Committed: &quot;Document authentication flow and API endpoints&quot;</span>
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="c1">#    ✅ Committed: "Document authentication flow and API endpoints"</span>
 </code></pre></div>
 <h2 id="complete-workflow-examples">Complete Workflow Examples<a class="headerlink" href="#complete-workflow-examples" title="Permanent link">&para;</a></h2>
 <h3 id="multi-repository-feature-development">Multi-Repository Feature Development<a class="headerlink" href="#multi-repository-feature-development" title="Permanent link">&para;</a></h3>
@@ -3822,7 +3822,7 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
 <a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># 2. Create feature branch across all repos (using suffix)</span>
 <a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>gits<span class="w"> </span>set-all<span class="w"> </span>--suffix<span class="w"> </span>-feature
-<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="c1"># This creates: main-feature, development-feature, etc. based on each repo&#39;s default</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="c1"># This creates: main-feature, development-feature, etc. based on each repo's default</span>
 <a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
 <a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="c1"># 3. Make changes in each repository</span>
 <a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="c1"># ... development work ...</span>
@@ -3831,18 +3831,18 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>gits<span class="w"> </span>push-all<span class="w"> </span>-py
 <a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>
 <a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="c1"># 5. Preview PR creation (suffix auto-detects default branches)</span>
-<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;New Feature&quot;</span><span class="w"> </span>--suffix<span class="w"> </span>-feature<span class="w"> </span>--dry-run
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"New Feature"</span><span class="w"> </span>--suffix<span class="w"> </span>-feature<span class="w"> </span>--dry-run
 <a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="c1"># Shows: repo-api (main-feature → main), repo-web (development-feature → development), etc.</span>
 <a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>
 <a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="c1"># 6. Create PRs across all repos with differences</span>
-<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;New Feature&quot;</span><span class="w"> </span>--suffix<span class="w"> </span>-feature
+<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"New Feature"</span><span class="w"> </span>--suffix<span class="w"> </span>-feature
 <a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="c1"># Each PR targets the correct default branch automatically!</span>
 <a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a>
 <a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="c1"># 7. After code review, merge all PRs</span>
 <a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a>gits<span class="w"> </span>pr<span class="w"> </span>merge-all<span class="w"> </span>--delete-branch
 <a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a>
 <a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a><span class="c1"># 8. Switch back to default branches</span>
-<a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>gits<span class="w"> </span>set-all<span class="w"> </span>--suffix<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">  </span><span class="c1"># or manually: gits set-all main</span>
+<a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>gits<span class="w"> </span>set-all<span class="w"> </span>--suffix<span class="w"> </span><span class="s2">""</span><span class="w">  </span><span class="c1"># or manually: gits set-all main</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">The Power of <code>--suffix</code></p>
@@ -3870,7 +3870,7 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="c1"># Weekly repo maintenance</span>
 <a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;🧹 Starting repository maintenance...&quot;</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"🧹 Starting repository maintenance..."</span>
 <a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>
 <a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="c1"># Fetch all updates</span>
 <a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>gits<span class="w"> </span>fetch-all<span class="w"> </span>--no-tags
@@ -3881,7 +3881,7 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="c1"># Check for open issues</span>
 <a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>gits<span class="w"> </span>fetch-issues-all<span class="w"> </span>--state<span class="w"> </span>open
 <a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>
-<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✅ Maintenance complete!&quot;</span>
+<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"✅ Maintenance complete!"</span>
 </code></pre></div>
 <h3 id="microservices-dependency-update">Microservices Dependency Update<a class="headerlink" href="#microservices-dependency-update" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># Update a shared dependency across 20 microservices</span>
@@ -3896,10 +3896,10 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="c1"># ... run update scripts ...</span>
 <a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>
 <a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a><span class="c1"># 4. Commit all with descriptive message</span>
-<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>gits<span class="w"> </span>push-all<span class="w"> </span>--batch<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: bump shared-lib to v2.0.0&quot;</span>
+<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>gits<span class="w"> </span>push-all<span class="w"> </span>--batch<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: bump shared-lib to v2.0.0"</span>
 <a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>
 <a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a><span class="c1"># 5. Create PRs</span>
-<a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Bump shared-lib to v2.0.0&quot;</span><span class="w"> </span>--base<span class="w"> </span>main
+<a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a>gits<span class="w"> </span>pr<span class="w"> </span>create-all<span class="w"> </span>--title<span class="w"> </span><span class="s2">"Bump shared-lib to v2.0.0"</span><span class="w"> </span>--base<span class="w"> </span>main
 <a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a>
 <a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a><span class="c1"># 6. After CI passes, merge all</span>
 <a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a>gits<span class="w"> </span>pr<span class="w"> </span>merge-all<span class="w"> </span>--delete-branch
@@ -3938,8 +3938,8 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <h3 id="custom-configuration">Custom Configuration<a class="headerlink" href="#custom-configuration" title="Permanent link">&para;</a></h3>
 <p>Create <code>~/.config/gits/config</code> for custom settings:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># Example configuration</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nv">DEFAULT_BRANCH</span><span class="o">=</span><span class="s2">&quot;develop&quot;</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="nv">MERGE_STRATEGY</span><span class="o">=</span><span class="s2">&quot;rebase&quot;</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nv">DEFAULT_BRANCH</span><span class="o">=</span><span class="s2">"develop"</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="nv">MERGE_STRATEGY</span><span class="o">=</span><span class="s2">"rebase"</span>
 <a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="nv">MAX_CONCURRENT</span><span class="o">=</span><span class="m">10</span>
 <a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="nv">AUTO_RESOLVE_CONFLICTS</span><span class="o">=</span><span class="nb">false</span>
 </code></pre></div>
@@ -3979,20 +3979,20 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <h4 id="vs-code">VS Code<a class="headerlink" href="#vs-code" title="Permanent link">&para;</a></h4>
 <p>Add to <code>.vscode/tasks.json</code>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="p">{</span>
-<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">  </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">  </span><span class="nt">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Git Pull All&quot;</span><span class="p">,</span>
-<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
-<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gits&quot;</span><span class="p">,</span>
-<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pull-all&quot;</span><span class="p">],</span>
-<a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a><span class="w">      </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="w">      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Git Pull All"</span><span class="p">,</span>
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span>
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="w">      </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gits"</span><span class="p">,</span>
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="w">      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"pull-all"</span><span class="p">],</span>
+<a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a><span class="w">      </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span>
 <a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a><span class="w">    </span><span class="p">},</span>
 <a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-45-11" name="__codelineno-45-11" href="#__codelineno-45-11"></a><span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Git Push All (AI)&quot;</span><span class="p">,</span>
-<a id="__codelineno-45-12" name="__codelineno-45-12" href="#__codelineno-45-12"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
-<a id="__codelineno-45-13" name="__codelineno-45-13" href="#__codelineno-45-13"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gits&quot;</span><span class="p">,</span>
-<a id="__codelineno-45-14" name="__codelineno-45-14" href="#__codelineno-45-14"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;push-all&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-py&quot;</span><span class="p">],</span>
-<a id="__codelineno-45-15" name="__codelineno-45-15" href="#__codelineno-45-15"></a><span class="w">      </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span>
+<a id="__codelineno-45-11" name="__codelineno-45-11" href="#__codelineno-45-11"></a><span class="w">      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Git Push All (AI)"</span><span class="p">,</span>
+<a id="__codelineno-45-12" name="__codelineno-45-12" href="#__codelineno-45-12"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span>
+<a id="__codelineno-45-13" name="__codelineno-45-13" href="#__codelineno-45-13"></a><span class="w">      </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gits"</span><span class="p">,</span>
+<a id="__codelineno-45-14" name="__codelineno-45-14" href="#__codelineno-45-14"></a><span class="w">      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"push-all"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-py"</span><span class="p">],</span>
+<a id="__codelineno-45-15" name="__codelineno-45-15" href="#__codelineno-45-15"></a><span class="w">      </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span>
 <a id="__codelineno-45-16" name="__codelineno-45-16" href="#__codelineno-45-16"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-45-17" name="__codelineno-45-17" href="#__codelineno-45-17"></a><span class="w">  </span><span class="p">]</span>
 <a id="__codelineno-45-18" name="__codelineno-45-18" href="#__codelineno-45-18"></a><span class="p">}</span>
@@ -4000,29 +4000,29 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
 <h3 id="shell-integration">Shell Integration<a class="headerlink" href="#shell-integration" title="Permanent link">&para;</a></h3>
 <p>Add to <code>~/.bashrc</code> or <code>~/.zshrc</code>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># Quick git status across repos</span>
-<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gs</span><span class="o">=</span><span class="s1">&#39;gits status-all&#39;</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gs</span><span class="o">=</span><span class="s1">'gits status-all'</span>
 <a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>
 <a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="c1"># Fast push all with AI commits</span>
-<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gpa</span><span class="o">=</span><span class="s1">&#39;gits push-all -py&#39;</span>
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gpa</span><span class="o">=</span><span class="s1">'gits push-all -py'</span>
 <a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>
 <a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="c1"># Pull everything</span>
-<a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gpl</span><span class="o">=</span><span class="s1">&#39;gits pull-all&#39;</span>
+<a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gpl</span><span class="o">=</span><span class="s1">'gits pull-all'</span>
 <a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a>
 <a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="c1"># Create PRs across repos</span>
-<a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gpr</span><span class="o">=</span><span class="s1">&#39;gits pr create-all&#39;</span>
+<a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gpr</span><span class="o">=</span><span class="s1">'gits pr create-all'</span>
 </code></pre></div></p>
 <h3 id="cicd-pipelines">CI/CD Pipelines<a class="headerlink" href="#cicd-pipelines" title="Permanent link">&para;</a></h3>
 <h4 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update Repositories</span>
 <a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="w">    </span><span class="no">gits pull-all --strategy rebase</span>
-<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">    </span><span class="no">gits push-all --batch -m &quot;CI: Update dependencies&quot;</span>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">    </span><span class="no">gits push-all --batch -m "CI: Update dependencies"</span>
 </code></pre></div>
 <h4 id="gitlab-ci">GitLab CI<a class="headerlink" href="#gitlab-ci" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="nt">update-repos</span><span class="p">:</span>
 <a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gits pull-all --strategy merge</span>
-<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gits push-all --batch -m &quot;CI</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update repositories&quot;</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gits push-all --batch -m "CI</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update repositories"</span>
 </code></pre></div>
 <h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
 <ul>
@@ -4278,7 +4278,7 @@ Interactive login supporting GitHub, Gitea, and Forgejo.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
