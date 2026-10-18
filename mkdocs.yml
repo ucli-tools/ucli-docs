@@ -17,45 +17,37 @@ theme:
   name: material
   custom_dir: overrides
   palette:
-    # Dark mode (primary theme)
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: orange
-      accent: orange
-      toggle:
-        icon: material/brightness-7
-        name: Switch to light mode
-    # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: orange
-      accent: orange
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
-        name: Switch to dark mode
+        icon: material/circle-half-full
+        name: Switch colour theme
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/circle-half-full
+        name: Switch colour theme
 
-  font:
-    text: Roboto
-    code: Roboto Mono
+  font: false
 
-  logo: assets/logo.svg
-  favicon: assets/favicon.svg
+  logo: ucli-kit/mark.svg
+  favicon: ucli-kit/mark.svg
 
   features:
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
-    - navigation.top
-    - navigation.footer
+    - navigation.path
+    - toc.follow
     - search.suggest
     - search.highlight
-    - search.share
     - content.code.copy
     - content.code.annotate
-    - content.action.edit
-    - content.action.view
 
   icon:
     repo: fontawesome/brands/github
@@ -85,6 +77,16 @@ markdown_extensions:
   - def_list
   - toc:
       permalink: true
+      title: On this page
+
+# The kit's README is not a page
+exclude_docs: |
+  ucli-kit/*.md
+
+extra_css:
+  - ucli-kit/tokens.css
+  - ucli-kit/base.css
+  - stylesheets/ucli-material.css
 
 # Plugins
 plugins:
@@ -93,6 +95,7 @@ plugins:
 
 # Extra
 extra:
+  generator: false
   social:
     - icon: fontawesome/solid/house
       link: https://ucli.tools
