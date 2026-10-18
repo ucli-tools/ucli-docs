@@ -75,13 +75,8 @@ brew install pandoc
 ```
 
 #### Windows
-```bash
-# Install MiKTeX
-# Download from: https://miktex.org/download
 
-# Install pandoc
-# Download from: https://pandoc.org/installing.html
-```
+On Windows, use WSL and follow the Linux steps above. Native Windows is not supported.
 
 ## Usage
 
