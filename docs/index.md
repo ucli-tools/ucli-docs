@@ -29,7 +29,7 @@ ucli build gits mdtexpdf mdaudiobook
 
 UCLI Tools is a professional suite of command-line utilities that brings together essential development tools under one unified ecosystem. Each tool is designed with developer experience in mind, featuring:
 
-- **Cross-platform compatibility** - Works on Linux, macOS, and Windows
+- **Cross-platform compatibility** - Works on Linux and macOS; on Windows, use WSL
 - **Consistent interfaces** - Familiar command patterns across all tools
 - **Rich documentation** - Comprehensive guides and examples
 - **Open source** - Apache 2.0 licensed, community-driven development
@@ -57,10 +57,8 @@ UCLI Tools is a professional suite of command-line utilities that brings togethe
 ## 📖 Documentation Sections
 
 - **[Getting Started](getting-started/introduction.md)** - Installation and setup guides
-- **[Tools](tools/)** - Detailed documentation for each tool
-- **[Guides](guides/)** - Tutorials and best practices
-- **[Reference](reference/)** - API docs and technical references
-- **[Community](community/)** - Contributing and community resources
+- **[Tools](tools/ucli.md)** - Detailed documentation for each tool
+- **[Community](community/contact.md)** - Contributing and community resources
 
 ## 🌟 Why Choose UCLI Tools?
 
@@ -91,4 +89,4 @@ All UCLI Tools are licensed under the Apache License 2.0. See individual tool re
 
 ---
 
-**Ready to get started?** Head over to our [Installation Guide](getting-started/installation.md) or explore the [Available Tools](tools/).
+**Ready to get started?** Head over to our [Installation Guide](getting-started/installation.md) or explore the [Available Tools](tools/ucli.md).

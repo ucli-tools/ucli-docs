@@ -19,7 +19,7 @@ mdtexpdf bridges the gap between simple Markdown writing and professional PDF ou
 - **Multi-Format Support** - Articles, books, and custom layouts
 - **Unicode Support** - Full CJK character support
 - **Header/Footer Control** - Three-tier policy system
-- **Cross-Platform** - Works on Linux, macOS, and Windows
+- **Cross-Platform** - Works on Linux and macOS; on Windows, use WSL
 
 ## Installation
 
@@ -134,6 +134,7 @@ mdtexpdf
 ```
 
 The interactive mode will prompt for:
+
 - Document title and author
 - Template selection
 - Output filename
@@ -152,6 +153,7 @@ mdtexpdf create new-document.md "Document Title" "Author Name"
 ```
 
 This creates a new Markdown file with:
+
 - YAML frontmatter template
 - Sample content sections
 - LaTeX math examples
@@ -292,6 +294,7 @@ mdtexpdf convert --template custom.tex document.md
 
 #### Template Structure
 Templates should include:
+
 - Document class definition
 - Package imports
 - Page layout settings
