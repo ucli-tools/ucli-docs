@@ -1,6 +1,6 @@
 # Welcome to UCLI Tools Documentation
 
-[![UCLI Tools](assets/logo.svg){ width="48" align="right" }](https://ucli.tools)
+[![UCLI Tools](ucli-kit/mark.svg){ width="48" align="right" }](https://ucli.tools)
 
 **Professional CLI tools for developers** - A comprehensive suite of command-line utilities designed to streamline development workflows, automate common tasks, and enhance productivity.
 

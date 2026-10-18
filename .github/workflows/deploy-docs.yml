@@ -24,7 +24,11 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.12'
+
+      - name: Check ucli-kit
+        continue-on-error: true   # a kit check never blocks a deploy
+        run: bash scripts/check-kit.sh
 
       - name: Cache dependencies
         uses: actions/cache@v3
@@ -34,11 +38,14 @@ jobs:
 
       - name: Install MkDocs Material
         run: |
-          pip install mkdocs-material
-          pip install mkdocs-minify-plugin
+          pip install -r requirements.txt
 
       - name: Build documentation
         run: mkdocs build --clean
+
+      - name: Check chrome (top bar and footer against ucli-kit/sites.txt)
+        continue-on-error: true   # a chrome check never blocks a deploy
+        run: bash scripts/check-chrome.sh
 
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
