@@ -36,14 +36,26 @@ curl -O https://raw.githubusercontent.com/ucli-tools/ucli/main/ucli.sh
 chmod +x ucli.sh
 ```
 
-### Step 3: Install system-wide
+### Step 3: Install
 
 ```bash
-# Install to /usr/local/bin (requires sudo)
-sudo ./ucli.sh install
+# Installs to ~/.local/bin (no sudo needed)
+./ucli.sh install
+```
 
-# Or install to user directory
-./ucli.sh install --user
+If you already have ucli in `/usr/local/bin`, it is updated there (sudo is used only if that directory is not writable). To move it to `~/.local/bin`, run `ucli install --move`.
+
+If `ucli` is not found afterwards, add `~/.local/bin` to your PATH (macOS does not have it there by default). ucli prints these lines when it is missing:
+
+```bash
+# bash (macOS: ~/.bash_profile)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+
+# zsh
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+
+# fish
+fish_add_path ~/.local/bin
 ```
 
 ### Step 4: Verify installation
@@ -198,19 +210,21 @@ ucli list
 which ucli
 
 # If not found, check installation directory
-ls -la /usr/local/bin/ucli
+ls -la ~/.local/bin/ucli
 
 # Add to PATH manually
-export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
 #### Permission denied during installation
 
+ucli installs to `~/.local/bin` and needs no sudo. Make sure the directory exists and is writable:
+
 ```bash
-# The installer needs sudo access for system-wide installation
-# Run with sudo if needed
-sudo curl -fsSL https://install.ucli.tools/install.sh | bash
+mkdir -p ~/.local/bin
 ```
+
+A copy in `/usr/local/bin` is updated in place (with sudo). Move it with `ucli install --move`.
 
 #### Network connectivity issues
 
@@ -259,15 +273,13 @@ make --version
 To remove UCLI Tools from your system:
 
 ```bash
-# Uninstall ucli (removes tool manager)
-ucli uninstall
-
-# Or manual removal
-sudo rm /usr/local/bin/ucli
-sudo rm -rf /usr/local/share/ucli
+ucli remove <tool>      # for each installed tool, first
+ucli uninstall          # removes ucli, ~/.ucli_env, ~/.ucli, its state and build cache
 ```
 
-Note: Individual tools are installed separately and may need to be removed individually.
+Tools are left in place by `uninstall`; remove them with `ucli remove` first.
+
+An old system copy, if you still have one, can be removed with `sudo rm /usr/local/bin/ucli`.
 
 ## Next Steps
 
