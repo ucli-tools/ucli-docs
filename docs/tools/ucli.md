@@ -34,16 +34,14 @@ ucli help
 ### Manual Install
 
 ```bash
-# Download the script
-wget https://raw.githubusercontent.com/ucli-tools/ucli/main/ucli.sh
-chmod +x ucli.sh
+git clone https://github.com/ucli-tools/ucli.git
+cd ucli
 
-# Install system-wide
-sudo ./ucli.sh install
-
-# Or install to user directory
-./ucli.sh install --user
+# Installs to ~/.local/bin, no sudo
+make build
 ```
+
+If ucli is already in `/usr/local/bin`, it is updated there. `ucli install --move` moves it to `~/.local/bin`.
 
 ## Usage
 
@@ -56,6 +54,7 @@ ucli
 ```
 
 The interactive menu provides options to:
+
 - Login to your GitHub organization
 - Build and install tools
 - Logout from your organization
@@ -106,6 +105,7 @@ ucli login
 ```
 
 This will:
+
 1. Prompt for your GitHub organization name
 2. Store the organization in the `ORG` environment variable
 3. Enable access to private repositories (if applicable)

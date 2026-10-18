@@ -65,7 +65,7 @@ clean:
 ### Prerequisites
 
 #### System Requirements
-- **Linux/macOS/Windows** with bash-compatible shell
+- **Linux/macOS** with a bash-compatible shell (on Windows, use WSL)
 - **git** for version control
 - **make** for build system
 - **curl/wget** for downloading dependencies

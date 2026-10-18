@@ -40,6 +40,7 @@ gits clone-all
 
 ## Our Commitment
 We are committed to:
+
 *   Maintaining open source under the Apache 2.0 ThreeFold license
 *   Creating tools that solve real-world problems
 *   Building a community of contributors and users
@@ -86,7 +87,7 @@ We are committed to:
     ```
 
 ## Join Us
-UCLI-Tools is more than just software—it's a movement to make technology
+UCLI-Tools is more than just software; it's a movement to make technology
 more accessible, understandable, and useful for everyone. Whether you're
 a developer, a system administrator, or just someone who wants to get
 things done efficiently, UCLI-Tools is for you.

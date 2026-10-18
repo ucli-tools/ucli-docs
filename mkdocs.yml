@@ -1,4 +1,5 @@
 # MkDocs Configuration for UCLI Tools Documentation
+strict: true
 site_name: UCLI Tools
 site_description: Professional CLI tools for developers
 site_author: UCLI Tools Team
@@ -126,10 +127,6 @@ nav:
   - Getting Started:
     - Introduction: getting-started/introduction.md
     - Installation: getting-started/installation.md
-    - Quick Start: getting-started/quickstart.md
-    - Core Concepts: getting-started/concepts.md
-    - FAQ: getting-started/faq.md
-    - Glossary: getting-started/glossary.md
 
   - Tools:
     - ucli: tools/ucli.md

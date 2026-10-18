@@ -7,7 +7,7 @@ Welcome to UCLI Tools, a professional suite of command-line utilities designed t
 UCLI Tools is a curated collection of essential command-line utilities that work together to provide a comprehensive development environment. Each tool is built with:
 
 - **Developer Experience First** - Intuitive interfaces and helpful error messages
-- **Cross-Platform Compatibility** - Works seamlessly on Linux, macOS, and Windows
+- **Cross-Platform Compatibility** - Works on Linux and macOS; on Windows, use WSL
 - **Open Source Philosophy** - Apache 2.0 licensed, community-driven development
 - **Consistent Design** - Shared patterns and branding across all tools
 
@@ -69,12 +69,13 @@ Tools work together seamlessly:
 ### System Requirements
 
 **Minimum Requirements:**
-- Linux, macOS, or Windows
+
+- Linux or macOS (on Windows, use WSL)
 - Bash shell (or compatible)
-- curl or wget for installation
-- Git for development workflows
+- curl, git, make and bash for installation
 
 **Recommended Setup:**
+
 - Modern Linux distribution or macOS
 - Development tools (make, gcc, etc.)
 - Text editor or IDE
@@ -123,8 +124,7 @@ Tools work together seamlessly:
 Now that you understand what UCLI Tools is, let's get you set up:
 
 1. **[Installation Guide](installation.md)** - Install UCLI Tools on your system
-2. **[Quick Start](quickstart.md)** - Your first steps with UCLI Tools
-3. **[Tool Documentation](../tools/)** - Learn about individual tools
+2. **[Tool Documentation](../tools/ucli.md)** - Learn about individual tools
 
 ---
 

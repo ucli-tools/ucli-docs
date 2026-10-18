@@ -18,7 +18,7 @@ mdaudiobook bridges the gap between written content and audio consumption. Wheth
 - **Metadata Tagging** - ID3 tags for podcast compatibility
 - **Batch Processing** - Convert multiple files at once
 - **Customizable Output** - Adjust speed, pitch, and audio quality
-- **Cross-Platform** - Works on Linux, macOS, and Windows
+- **Cross-Platform** - Works on Linux and macOS; on Windows, use WSL
 
 ## Installation
 
@@ -141,6 +141,7 @@ mdaudiobook
 ```
 
 The interactive mode will prompt for:
+
 - Input file selection
 - Voice preferences
 - Output format options
@@ -565,6 +566,7 @@ pip install -e .
 ### Voice Development
 
 Contribute new voice profiles by submitting PRs with:
+
 - Voice configuration
 - Audio samples
 - Performance benchmarks

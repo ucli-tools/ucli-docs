@@ -17,6 +17,7 @@ Get in touch with the UCLI Tools community! We're here to help, collaborate, and
 
 #### 💬 GitHub Discussions
 Our primary community forum for:
+
 - General questions and help
 - Feature requests and ideas
 - Show and tell
@@ -26,6 +27,7 @@ Our primary community forum for:
 
 #### 🐛 GitHub Issues
 For bug reports and technical issues:
+
 - [ucli issues](https://github.com/ucli-tools/ucli/issues)
 - [gits issues](https://github.com/ucli-tools/gits/issues)
 - [mdtexpdf issues](https://github.com/ucli-tools/mdtexpdf/issues)
@@ -76,6 +78,7 @@ For bug reports and technical issues:
 
 ### Tool Ownership
 Each tool has dedicated maintainers:
+
 - **ucli**: Tool manager and ecosystem coordination
 - **gits**: Git workflow automation
 - **mdtexpdf**: Document processing and PDF generation
@@ -98,6 +101,7 @@ Each tool has dedicated maintainers:
 
 ### Contributors
 We recognize all contributors through:
+
 - GitHub contributor statistics
 - Changelog mentions
 - Community spotlights

@@ -39,6 +39,7 @@ delete:
 
 ## Bash Script Structure
 Each tool's bash script should include these standard functions:
+
 *   `install()`      - Installs the tool to `/usr/local/bin`
 *   `uninstall()`    - Removes the tool from `/usr/local/bin`
 *   `help()`         - Displays help information
@@ -46,6 +47,7 @@ Each tool's bash script should include these standard functions:
 
 ## UCLI Integration
 Tools are designed to be built and managed through the UCLI command:
+
 *   `ucli build toolname`    - Builds and installs the tool
 *   `ucli list`              - Lists available tools
 *   `ucli update`            - Updates all installed tools

@@ -219,7 +219,7 @@ tool-repository/
 
 #### Build System
 - **Makefile**: Standard build targets (build, test, install, clean)
-- **Cross-Platform**: Support for Linux, macOS, Windows
+- **Cross-Platform**: Linux and macOS; on Windows, use WSL
 - **Dependencies**: Automatic dependency resolution
 - **Packaging**: Distribution-ready packages
 

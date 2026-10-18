@@ -91,7 +91,7 @@ git push origin feature/amazing-improvement
 Help ensure quality by:
 
 - Writing unit tests for new features
-- Testing on different platforms (Linux, macOS, Windows)
+- Testing on different platforms (Linux, macOS, and Windows through WSL)
 - Reporting compatibility issues
 - Improving test coverage
 
@@ -173,8 +173,7 @@ Each tool has its own setup requirements. Check the tool's README.md or CONTRIBU
 ### Documentation Resources
 
 - [Main Documentation](https://docs.ucli.tools)
-- [Development Guides](../development/)
-- [API References](../reference/)
+- [Development Guides](../development/architecture.md)
 - [Community Guidelines](code-of-conduct.md)
 
 ## Recognition

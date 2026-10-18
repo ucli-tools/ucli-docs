@@ -15,6 +15,7 @@ If you discover a security vulnerability in any UCLI Tools component, please hel
 
 ### What to Include
 Please include the following information in your report:
+
 - **Description**: Clear description of the vulnerability
 - **Impact**: Potential impact and severity
 - **Steps to Reproduce**: Detailed reproduction steps
@@ -180,7 +181,6 @@ We recognize security researchers who help make UCLI Tools safer:
 ### Related Documentation
 - [Contributing Guide](contributing.md)
 - [Code of Conduct](code-of-conduct.md)
-- [Privacy Policy](privacy.md) *(planned)*
 
 ## 🙏 Acknowledgments
 

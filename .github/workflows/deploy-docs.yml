@@ -41,7 +41,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Build documentation
-        run: mkdocs build --clean
+        run: mkdocs build --clean --strict
 
       - name: Check chrome (top bar and footer against ucli-kit/sites.txt)
         continue-on-error: true   # a chrome check never blocks a deploy
