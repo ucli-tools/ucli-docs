@@ -75,14 +75,8 @@ pip install pyttsx3
 ```
 
 #### Windows
-```bash
-# Install Python from python.org
-# Install FFmpeg from ffmpeg.org
 
-# Install TTS engines
-pip install pyttsx3
-# OR install eSpeak: https://espeak.sourceforge.net/
-```
+On Windows, use WSL and follow the Linux steps above. Native Windows is not supported.
 
 ## Usage
 
@@ -194,7 +188,6 @@ duration: "2h 30m"
 mdaudiobook voices
 
 # Use specific voice
-mdaudiobook generate doc.md --voice "Zira"  # Windows
 mdaudiobook generate doc.md --voice "Alex"  # macOS
 ```
 

@@ -7,17 +7,17 @@ The `ucli` tool is the central command-line interface for managing all UCLI Tool
 
 ## Overview
 
-`ucli` is a bash script designed for Ubuntu (and compatible systems) to simplify the process of building and managing tools from the UCLI Tools organization on GitHub. It provides an interactive menu and command-line interface with authentication via environment variables.
+`ucli` is a bash script for Linux and macOS that builds and manages the tools listed in the UCLI registry. It provides an interactive menu and a command-line interface. Each tool is fetched at the commit pinned in the registry and built with its own `make build`.
 
 ## Key Features
 
 - **Interactive Mode** - User-friendly menu for easy navigation and tool building
 - **Command-Line Mode** - Execute specific commands programmatically
 - **GitHub Integration** - Clones repositories from GitHub with makefile support
-- **Authentication** - Supports GitHub organization authentication
+- **Organization Setting** - `ucli login` stores a GitHub organization name (default `ucli-tools`); it is a setting, not authentication
 - **Error Handling** - Robust error handling with informative messages
 - **Color-Coded Output** - Improved readability with ANSI color codes
-- **Temporary Directories** - Safe cloning with automatic cleanup
+- **Temporary Build Directories** - Safe cloning with automatic cleanup
 
 ## Installation
 
@@ -55,10 +55,13 @@ ucli
 
 The interactive menu provides options to:
 
-- Login to your GitHub organization
-- Build and install tools
-- Logout from your organization
-- Exit the tool
+- Set your GitHub organization (login) or unset it (logout)
+- Build one or more tools, or all of them (build, build-all)
+- List the tools in the registry (list)
+- Update installed tools (update)
+- Install prerequisites (prereq)
+- Show tool versions (versions)
+- Show help or exit
 
 ### Command-Line Mode
 
@@ -67,12 +70,16 @@ The interactive menu provides options to:
 #### Core Commands
 
 ```bash
-ucli install          # Install ucli system-wide
-ucli uninstall        # Remove ucli from system
-ucli login            # Login to GitHub organization
-ucli logout           # Logout from organization
-ucli list             # List public repos in organization
-ucli help             # Show help information
+ucli install          # Install ucli to ~/.local/bin (--move: move it out of /usr/local/bin)
+ucli uninstall        # Remove ucli, its settings and build cache (tools stay)
+ucli remove <tool>    # Uninstall a tool with its 'make delete' target
+ucli login [org]      # Set the GitHub organization (default: ucli-tools)
+ucli logout           # Unset the organization
+ucli list             # List official tools from the registry
+ucli versions [tool]  # Show versions (--all for every installed tool)
+ucli prereq           # Install prerequisites (apt, dnf, pacman, brew)
+ucli help             # Show help information (also --help, -h)
+ucli --version        # Print the ucli version
 ucli build <repo>     # Build specific repository
 ```
 
@@ -87,62 +94,51 @@ ucli build mdaudiobook
 # Install multiple tools
 ucli build gits mdtexpdf mdaudiobook
 
-# Update all tools
+# Build every tool in the registry
+ucli build-all
+
+# Update all installed tools
 ucli update
 
 # List available tools
 ucli list
 ```
 
-## Authentication Setup
+## Organization Setting
 
-### Organization Login
-
-Before building tools, you need to authenticate with your GitHub organization:
+`ucli login` does not authenticate with GitHub. It records an organization name, and building works without it (the default is `ucli-tools`).
 
 ```bash
-ucli login
+ucli login            # prompts for a name
+ucli login my-org     # sets it directly
 ```
 
-This will:
-
-1. Prompt for your GitHub organization name
-2. Store the organization in the `ORG` environment variable
-3. Enable access to private repositories (if applicable)
+The name is stored in `~/.ucli_env` and `ucli logout` deletes that file. Tool versions are always pinned by the ucli-tools registry, whatever organization is set. ucli has no support for private repositories or access tokens.
 
 ### Environment Variables
 
-`ucli` uses the following environment variables:
-
-- `ORG` - Your GitHub organization name (set by `ucli login`)
-- `GITHUB_TOKEN` - Optional GitHub personal access token for private repos
+- `NO_COLOR` - Turns off colored output
+- `XDG_CACHE_HOME` - Where the build directory lives (default `~/.cache`)
 
 ## Tool Building Process
 
 When you run `ucli build <tool>`, the following happens:
 
-1. **Validation** - Checks if you're logged in and tool exists
-2. **Cloning** - Downloads the repository to `/tmp/code/github.com/<org>/<repo>`
-3. **Dependencies** - Checks for required build tools (make, gcc, etc.)
-4. **Building** - Runs `make` in the repository root
-5. **Installation** - Installs the tool system-wide
-6. **Cleanup** - Removes temporary files
+1. **Validation** - Checks the organization setting, the tool name and the registry entry
+2. **Fetching** - Downloads the commit pinned in the registry into a temporary directory under `~/.cache/ucli/`
+3. **Contract check** - Requires a Makefile with a `build` target; otherwise nothing is run
+4. **Building** - Runs `make build` in the repository root
+5. **Recording** - Notes the installed commit so `ucli update` and `ucli versions` can compare it with the pin
+6. **Cleanup** - Removes the temporary directory
 
 ### Example Build Process
 
 ```bash
 $ ucli build gits
-🔍 Checking prerequisites...
-✅ Git is available
-✅ Make is available
-🔄 Cloning repository...
-📁 Cloning ucli-tools/gits to /tmp/code/github.com/ucli-tools/gits
-✅ Repository cloned successfully
-🔨 Building tool...
-📦 Running make install...
-✅ Tool built and installed successfully
-🧹 Cleaning up temporary files...
-✅ Build complete! Tool 'gits' is ready to use.
+Building gits (v1a2b3c4d)...
+Running make build in gits...
+Build successful for gits!
+built: gits; failed: none
 ```
 
 ## Prerequisites
@@ -151,8 +147,8 @@ $ ucli build gits
 
 - **bash** - Shell environment (most Unix-like systems)
 - **git** - Version control system
-- **curl** or **wget** - For downloading scripts
-- **make** - Build system (optional, for building tools)
+- **curl** - For downloading scripts
+- **make** - Build system, needed to build tools
 
 ### Installing Prerequisites
 
@@ -162,36 +158,24 @@ sudo apt update
 sudo apt install -y git make curl
 ```
 
+Or run `ucli prereq`, which also installs `file`, `tree` and `uv` where the package manager allows.
+
 #### macOS
 ```bash
 brew install git make curl
 ```
 
 #### Other Systems
-Check your package manager for equivalent packages.
+Check your package manager for equivalent packages. On Windows, use WSL.
 
 ## Configuration
 
-### Default Settings
+`ucli` has no configuration file. Its defaults:
 
-`ucli` uses sensible defaults but can be configured:
-
-- **Organization**: Set via `ucli login`
-- **Install Directory**: `/usr/local/bin` (system) or `~/.local/bin` (user)
-- **Temp Directory**: `/tmp/code/github.com/`
-- **Color Output**: Enabled by default
-
-### Custom Configuration
-
-Create a configuration file at `~/.config/ucli/config`:
-
-```bash
-# Example configuration
-INSTALL_DIR="/usr/local/bin"
-TEMP_DIR="/tmp/ucli-builds"
-ENABLE_COLORS=true
-DEFAULT_ORG="ucli-tools"
-```
+- **Organization**: `ucli-tools`, changed with `ucli login`
+- **Install Directory**: `~/.local/bin`, or `/usr/local/bin` if ucli was already installed there
+- **Build Directory**: a temporary directory under `~/.cache/ucli/`, removed when the command ends
+- **Color Output**: Only on a terminal, and never when `NO_COLOR` is set
 
 ## Troubleshooting
 
@@ -212,8 +196,8 @@ export PATH="/usr/local/bin:$PATH"
 #### Build failures
 
 ```bash
-# Check prerequisites
-ucli check-prereqs
+# Install prerequisites
+ucli prereq
 
 # Verify git access
 git ls-remote https://github.com/ucli-tools/gits
@@ -222,34 +206,19 @@ git ls-remote https://github.com/ucli-tools/gits
 df -h
 ```
 
-#### Authentication issues
+#### Organization setting
 
 ```bash
-# Re-login to organization
-ucli logout
+# Show or change the organization
 ucli login
 
-# Check organization setting
-echo $ORG
+# Reset it
+ucli logout
 ```
 
 #### Permission denied
 
-```bash
-# For system-wide installation, use sudo
-sudo ucli install
-
-# Or install to user directory
-ucli install --user
-```
-
-### Debug Mode
-
-Enable verbose output for troubleshooting:
-
-```bash
-ucli --verbose build gits
-```
+A new `ucli install` goes to `~/.local/bin` and never needs sudo. If an old copy lives in `/usr/local/bin`, it is updated there, and `ucli install --move` moves it to `~/.local/bin`.
 
 ### Getting Help
 
@@ -257,8 +226,8 @@ ucli --verbose build gits
 # Show all available commands
 ucli help
 
-# Get help for specific command
-ucli build --help
+# Print the version
+ucli --version
 ```
 
 ## Examples
@@ -269,28 +238,21 @@ ucli build --help
 # 1. Install ucli
 curl -fsSL https://install.ucli.tools/install.sh | bash
 
-# 2. Login to organization
-ucli login
-# Enter: ucli-tools
+# 2. List the available tools
+ucli list
 
 # 3. Install popular tools
 ucli build gits mdtexpdf mdaudiobook
 
 # 4. Verify installation
-gits --version
-mdtexpdf --version
-mdaudiobook --version
-
-# 5. List all available tools
-ucli list
+ucli versions --all
 ```
 
 ### CI/CD Integration
 
 ```bash
 # Non-interactive installation
-echo "ucli-tools" | ucli login
-ucli build gits --quiet
+ucli build gits
 
 # Check installation
 which gits && echo "Installation successful"
@@ -299,14 +261,11 @@ which gits && echo "Installation successful"
 ### Development Workflow
 
 ```bash
-# Update all tools
+# Update all installed tools
 ucli update
 
-# Rebuild specific tool after changes
-ucli build gits --force
-
-# Clean old builds
-ucli clean
+# Remove a tool
+ucli remove gits
 ```
 
 ## Integration with Other Tools
@@ -334,7 +293,6 @@ Many IDEs can be configured to use `ucli` commands:
 - `ucli` clones and builds code from GitHub
 - Only install from trusted repositories
 - Review makefiles before building
-- Use GitHub tokens for private repositories
 - Keep tools updated for security patches
 
 ## Contributing
@@ -348,20 +306,6 @@ To contribute to `ucli`:
 5. Submit a pull request
 
 See our [Contributing Guide](../community/contributing.md) for details.
-
-## Changelog
-
-### Version 1.0.0
-- Initial release
-- Basic tool building functionality
-- Interactive and command-line modes
-- GitHub integration
-
-### Version 1.1.0
-- Added multi-tool installation
-- Improved error handling
-- Added color output
-- Enhanced documentation
 
 ## Support
 
