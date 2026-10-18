@@ -20,7 +20,7 @@ The central command-line interface that manages installation, updates, and coord
 
 ```bash
 # Install ucli
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 
 # Install tools
 ucli build gits mdtexpdf

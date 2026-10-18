@@ -54,7 +54,7 @@ Please include the following information in your report:
 #### Installation Security
 ```bash
 # Verify installer integrity
-curl -fsSL https://install.ucli.tools | sh
+curl -fsSL https://install.ucli.tools/install.sh | bash
 
 # Or verify manually
 curl -O https://install.ucli.tools/install.sh

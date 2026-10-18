@@ -26,7 +26,7 @@ mdaudiobook bridges the gap between written content and audio consumption. Wheth
 
 ```bash
 # Install ucli tool manager first
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 
 # Install mdaudiobook
 ucli build mdaudiobook

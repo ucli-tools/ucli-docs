@@ -8,7 +8,7 @@ For most users, the quickest way to get started is using our automated installer
 
 ```bash
 # Download and run the installer
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 ```
 
 This will:
@@ -50,7 +50,7 @@ sudo ./ucli.sh install
 
 ```bash
 # Check if ucli is available
-ucli --version
+ucli help
 
 # Display help
 ucli help
@@ -66,7 +66,7 @@ sudo apt update
 sudo apt install -y curl git make
 
 # Install UCLI Tools
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 ```
 
 ### Linux (Fedora/CentOS/RHEL)
@@ -78,7 +78,7 @@ sudo dnf install -y curl git make
 sudo yum install -y curl git make
 
 # Install UCLI Tools
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 ```
 
 ### Linux (Arch Linux)
@@ -88,7 +88,7 @@ curl -fsSL https://install.ucli.tools | bash
 sudo pacman -S curl git make
 
 # Install UCLI Tools
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 ```
 
 ### macOS
@@ -101,7 +101,7 @@ curl -fsSL https://install.ucli.tools | bash
 brew install curl git make
 
 # Install UCLI Tools
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 ```
 
 ### Windows (via WSL)
@@ -130,7 +130,7 @@ Native Windows support is experimental. We recommend using WSL for the best expe
 
 ```bash
 # Check ucli version
-ucli --version
+ucli help
 
 # List available commands
 ucli help
@@ -209,7 +209,7 @@ export PATH="/usr/local/bin:$PATH"
 ```bash
 # The installer needs sudo access for system-wide installation
 # Run with sudo if needed
-sudo curl -fsSL https://install.ucli.tools | bash
+sudo curl -fsSL https://install.ucli.tools/install.sh | bash
 ```
 
 #### Network connectivity issues
@@ -219,7 +219,7 @@ sudo curl -fsSL https://install.ucli.tools | bash
 curl -I https://install.ucli.tools
 
 # Try alternative download method
-wget -qO- https://install.ucli.tools | bash
+wget -qO- https://install.ucli.tools/install.sh | bash
 ```
 
 #### Old version cached

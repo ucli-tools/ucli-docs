@@ -10,7 +10,7 @@ Get started with UCLI Tools in minutes:
 
 ```bash
 # Install the main ucli tool manager
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 
 # Install your favorite tools
 ucli build gits mdtexpdf mdaudiobook

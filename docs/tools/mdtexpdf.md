@@ -27,7 +27,7 @@ mdtexpdf bridges the gap between simple Markdown writing and professional PDF ou
 
 ```bash
 # Install ucli tool manager first
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 
 # Install mdtexpdf
 ucli build mdtexpdf

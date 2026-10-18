@@ -25,10 +25,10 @@ The `ucli` tool is the central command-line interface for managing all UCLI Tool
 
 ```bash
 # Download and install ucli
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 
 # Verify installation
-ucli --version
+ucli help
 ```
 
 ### Manual Install
@@ -267,7 +267,7 @@ ucli build --help
 
 ```bash
 # 1. Install ucli
-curl -fsSL https://install.ucli.tools | bash
+curl -fsSL https://install.ucli.tools/install.sh | bash
 
 # 2. Login to organization
 ucli login
